@@ -1,0 +1,11 @@
+use_frameworks!
+
+platform :ios, '9.3'
+
+target 'ShadeView_Example' do
+  pod 'ShadeView', :path => '../'
+
+  target 'ShadeView_Tests' do
+    inherit! :search_paths
+  end
+end
