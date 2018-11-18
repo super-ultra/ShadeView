@@ -23,25 +23,42 @@ open class CardView: UIView {
             case top
             case bottom
         }
+        
+        public enum Point {
+            case cardOrigin
+            case contentOrigin
+        }
     
         public var offset: CGFloat
         public var edge: Edge
+        public var point: Point
+        public var isAdjustedBySafeArea: Bool
         
-        init(offset: CGFloat, from edge: Edge) {
+        init(offset: CGFloat, edge: Edge, point: Point = .cardOrigin, isAdjustedBySafeArea: Bool = true) {
             self.offset = offset
             self.edge = edge
+            self.point = point
+            self.isAdjustedBySafeArea = isAdjustedBySafeArea
         }
         
-        public static var zero: RelativePosition {
-            return RelativePosition(offset: 0, from: .top)
+        public static func fromTop(_ offset: CGFloat, relativeTo point: Point = .cardOrigin) -> RelativePosition {
+            return RelativePosition(offset: offset, edge: .top, point: point, isAdjustedBySafeArea: false)
         }
         
-        public static func fromTop(_ offset: CGFloat) -> RelativePosition {
-            return RelativePosition(offset: offset, from: .top)
+        public static func fromBottom(_ offset: CGFloat, relativeTo point: Point = .cardOrigin) -> RelativePosition {
+            return RelativePosition(offset: offset, edge: .bottom, point: point, isAdjustedBySafeArea: false)
         }
         
-        public static func fromBottom(_ offset: CGFloat) -> RelativePosition {
-            return RelativePosition(offset: offset, from: .bottom)
+        public static func fromSafeAreaTop(_ offset: CGFloat, relativeTo point: Point = .cardOrigin)
+            -> RelativePosition
+        {
+            return RelativePosition(offset: offset, edge: .top, point: point, isAdjustedBySafeArea: true)
+        }
+        
+        public static func fromSafeAreaBottom(_ offset: CGFloat, relativeTo point: Point = .cardOrigin)
+            -> RelativePosition
+        {
+            return RelativePosition(offset: offset, edge: .bottom, point: point, isAdjustedBySafeArea: true)
         }
     }
 
@@ -71,7 +88,7 @@ open class CardView: UIView {
         return shadeView.origin
     }
     
-    open var topPosition: RelativePosition = .zero {
+    open var topPosition: RelativePosition = .fromSafeAreaTop(0) {
         didSet {
             updateAnchors()
         }
@@ -80,21 +97,20 @@ open class CardView: UIView {
     /// Helper for topPosition
     open var topInset: CGFloat {
         get {
-            return CardView.origin(for: topPosition, bounds: bounds)
+            return origin(for: topPosition)
         }
         set {
             topPosition = .fromTop(newValue)
         }
     }
     
-    open var middlePosition: RelativePosition = .zero {
+    open var middlePosition: RelativePosition = .fromSafeAreaBottom(0, relativeTo: .contentOrigin) {
         didSet {
             updateAnchors()
         }
     }
     
-    /// Default bottom inset is equal to headerHeight
-    open var customBottomPosition: RelativePosition? = nil {
+    open var bottomPosition: RelativePosition = .fromSafeAreaBottom(0, relativeTo: .contentOrigin) {
         didSet {
             updateAnchors()
         }
@@ -134,13 +150,17 @@ open class CardView: UIView {
         shadeView.scroll(toOrigin: newAnchor, animated: animated)
     }
     
-    /// Origins are bounds dependent. Use 'targetOrigin:for:bounds:' method if bounds are not ready.
+    /// Origins are layout dependent. Use 'targetOrigin:for:boundsHeight:headerHeight' method if the view is not layouted.
     open func origin(for state: State) -> CGFloat {
         return anchor(for: state)
     }
     
-    open func targetOrigin(for state: State, bounds: CGRect) -> CGFloat {
-        return targetAnchor(for: state, bounds: bounds)
+    open func targetOrigin(for state: State, boundsHeight: CGFloat) -> CGFloat {
+        return targetAnchor(for: state, boundsHeight: boundsHeight, headerHeight: headerView.frame.height)
+    }
+    
+    open func targetOrigin(for state: State, boundsHeight: CGFloat, headerHeight: CGFloat) -> CGFloat {
+        return targetAnchor(for: state, boundsHeight: boundsHeight, headerHeight: headerHeight)
     }
     
     open func addListener(_ listener: CardViewListener) {
@@ -230,65 +250,75 @@ open class CardView: UIView {
         var anchor: CGFloat
     }
     
-    private func targetAnchorForTop(forBounds bounds: CGRect) -> CGFloat {
-        let candidate = CardView.origin(for: topPosition, bounds: bounds)
+    private func targetAnchorForTop(boundsHeight: CGFloat, headerHeight: CGFloat) -> CGFloat {
+        let candidate = targetOrigin(for: topPosition, boundsHeight: boundsHeight, headerHeight: headerHeight)
         if fitsHeight {
             return candidate
         } else {
-            let totalContentHeight = contentView.contentSize.height + shadeView.headerView.frame.height
-                + getSafeAreaInsets().bottom
+            let contentOriginPosition: RelativePosition =
+                .fromSafeAreaBottom(contentView.contentSize.height, relativeTo: .contentOrigin)
             
-            let contentOrigin = CardView.origin(for: .fromBottom(totalContentHeight), bounds: bounds)
+            let contentOrigin = targetOrigin(for: contentOriginPosition, boundsHeight: boundsHeight,
+                headerHeight: headerHeight)
             
             return max(candidate, contentOrigin)
         }
     }
     
-    private func targetAnchorForMiddle(forBounds bounds: CGRect) -> CGFloat {
-        return CardView.origin(for: middlePosition, bounds: bounds)
+    private func targetAnchorForMiddle(boundsHeight: CGFloat, headerHeight: CGFloat) -> CGFloat {
+        return targetOrigin(for: middlePosition, boundsHeight: boundsHeight, headerHeight: headerHeight)
     }
     
-    private func targetAnchorForBottom(forBounds bounds: CGRect) -> CGFloat {
-        if let customBottomPosition = customBottomPosition {
-            return CardView.origin(for: customBottomPosition, bounds: bounds)
-        } else {
-            let bottomInset = shadeView.headerView.frame.height + getSafeAreaInsets().bottom
-            return CardView.origin(for: .fromBottom(bottomInset), bounds: bounds)
-        }
+    private func targetAnchorForBottom(boundsHeight: CGFloat, headerHeight: CGFloat) -> CGFloat {
+        return targetOrigin(for: bottomPosition, boundsHeight: boundsHeight, headerHeight: headerHeight)
     }
     
-    private func targetAnchorForDismissed(forBounds bounds: CGRect) -> CGFloat {
-        return bounds.height
+    private func targetAnchorForDismissed(boundsHeight: CGFloat) -> CGFloat {
+        return boundsHeight
     }
     
     private func anchor(for state: State) -> CGFloat {
-        return targetAnchor(for: state, bounds: bounds)
+        return targetAnchor(for: state, boundsHeight: bounds.height, headerHeight: headerView.frame.height)
     }
     
-    private func targetAnchor(for state: State, bounds: CGRect) -> CGFloat {
+    private func targetAnchor(for state: State, boundsHeight: CGFloat, headerHeight: CGFloat) -> CGFloat {
         switch state {
         case .top:
-            return targetAnchorForTop(forBounds: bounds)
+            return targetAnchorForTop(boundsHeight: boundsHeight, headerHeight: headerHeight)
         case .middle:
-            return targetAnchorForMiddle(forBounds: bounds)
+            return targetAnchorForMiddle(boundsHeight: boundsHeight, headerHeight: headerHeight)
         case .bottom:
-            return targetAnchorForBottom(forBounds: bounds)
+            return targetAnchorForBottom(boundsHeight: boundsHeight, headerHeight: headerHeight)
         case .dismissed:
-            return targetAnchorForDismissed(forBounds: bounds)
+            return targetAnchorForDismissed(boundsHeight: boundsHeight)
         }
     }
     
     private func origin(for position: RelativePosition) -> CGFloat {
-        return CardView.origin(for: position, bounds: bounds)
+        return targetOrigin(for: position, boundsHeight: bounds.height, headerHeight: headerView.frame.height)
     }
     
-    private static func origin(for position: RelativePosition, bounds: CGRect) -> CGFloat {
+    private func targetOrigin(for position: RelativePosition, boundsHeight: CGFloat, headerHeight: CGFloat) -> CGFloat {
+        var result: CGFloat = position.offset
+    
         switch (position.edge) {
         case .top:
-            return position.offset
+            if position.isAdjustedBySafeArea {
+                result += getSafeAreaInsets().top
+            }
         case .bottom:
-            return bounds.height - position.offset
+            result = boundsHeight - result
+            
+            if position.isAdjustedBySafeArea {
+                result -= getSafeAreaInsets().bottom
+            }
         }
+        
+        if position.point == .contentOrigin {
+            result -= headerHeight
+        }
+        
+        return result
     }
 
     private var availableAnchors: [AssociatedAnchor] {

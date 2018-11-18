@@ -114,17 +114,13 @@ final class ShapeViewController: UIViewController {
         if orientation.isLandscape {
             portraitConstraints.forEach { $0.isActive = false }
             landscapeConstraints.forEach { $0.isActive = true }
-            cardView.topInset = Layout.topInsetLandscape
+            cardView.topPosition = .fromSafeAreaTop(Layout.topInsetLandscape)
             cardView.availableStates = [.top, .bottom]
         } else if orientation.isPortrait {
             landscapeConstraints.forEach { $0.isActive = false }
             portraitConstraints.forEach { $0.isActive = true }
-            cardView.topInset = Layout.topInsetPortrait
+            cardView.topPosition = .fromSafeAreaTop(Layout.topInsetPortrait)
             cardView.availableStates = [.top, .middle, .bottom]
-        }
-        
-        if #available(iOS 11.0, *) {
-            cardView.topInset += view.safeAreaInsets.top
         }
     }
 
