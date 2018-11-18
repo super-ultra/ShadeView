@@ -119,7 +119,7 @@ open class ShadeView: UIView {
     private func setupLayout() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.set([.left, .right, .bottom], equalTo: self)
-        containerOriginConstraint = containerView.set(.top, equalTo: self, constant: origin)
+        containerOriginConstraint = containerView.set(.top, equalTo: self, constant: origin, priority: .fittingSizeLevel)
         
         contentBottomConstraints = []
     
@@ -129,7 +129,7 @@ open class ShadeView: UIView {
             view.set(.top, equalTo: headerView, attribute: .bottom)
             
             let bottomConstraint = view.set(.bottom, equalTo: containerView, attribute: .top,
-                constant: targetContentBottomPosition)
+                constant: targetContentBottomPosition, priority: .fittingSizeLevel)
             
             contentBottomConstraints.append(bottomConstraint)
         }
