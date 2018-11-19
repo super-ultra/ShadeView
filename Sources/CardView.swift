@@ -41,21 +41,21 @@ open class CardView: UIView {
             self.isAdjustedBySafeArea = isAdjustedBySafeArea
         }
         
-        public static func fromTop(_ offset: CGFloat, relativeTo point: Point = .cardOrigin) -> RelativePosition {
+        public static func fromTopIgnoringSafeArea(_ offset: CGFloat, relativeTo point: Point = .cardOrigin) -> RelativePosition {
             return RelativePosition(offset: offset, edge: .top, point: point, isAdjustedBySafeArea: false)
         }
         
-        public static func fromBottom(_ offset: CGFloat, relativeTo point: Point = .cardOrigin) -> RelativePosition {
+        public static func fromBottomIgnoringSafeArea(_ offset: CGFloat, relativeTo point: Point = .cardOrigin) -> RelativePosition {
             return RelativePosition(offset: offset, edge: .bottom, point: point, isAdjustedBySafeArea: false)
         }
         
-        public static func fromSafeAreaTop(_ offset: CGFloat, relativeTo point: Point = .cardOrigin)
+        public static func fromTop(_ offset: CGFloat, relativeTo point: Point = .cardOrigin)
             -> RelativePosition
         {
             return RelativePosition(offset: offset, edge: .top, point: point, isAdjustedBySafeArea: true)
         }
         
-        public static func fromSafeAreaBottom(_ offset: CGFloat, relativeTo point: Point = .cardOrigin)
+        public static func fromBottom(_ offset: CGFloat, relativeTo point: Point = .cardOrigin)
             -> RelativePosition
         {
             return RelativePosition(offset: offset, edge: .bottom, point: point, isAdjustedBySafeArea: true)
@@ -88,7 +88,7 @@ open class CardView: UIView {
         return shadeView.origin
     }
     
-    open var topPosition: RelativePosition = .fromSafeAreaTop(0) {
+    open var topPosition: RelativePosition = .fromTop(0) {
         didSet {
             updateAnchors()
         }
@@ -100,17 +100,17 @@ open class CardView: UIView {
             return origin(for: topPosition)
         }
         set {
-            topPosition = .fromTop(newValue)
+            topPosition = .fromTopIgnoringSafeArea(newValue)
         }
     }
     
-    open var middlePosition: RelativePosition = .fromSafeAreaBottom(0, relativeTo: .contentOrigin) {
+    open var middlePosition: RelativePosition = .fromBottom(0, relativeTo: .contentOrigin) {
         didSet {
             updateAnchors()
         }
     }
     
-    open var bottomPosition: RelativePosition = .fromSafeAreaBottom(0, relativeTo: .contentOrigin) {
+    open var bottomPosition: RelativePosition = .fromBottom(0, relativeTo: .contentOrigin) {
         didSet {
             updateAnchors()
         }
@@ -256,7 +256,7 @@ open class CardView: UIView {
             return candidate
         } else {
             let contentOriginPosition: RelativePosition =
-                .fromSafeAreaBottom(contentView.contentSize.height, relativeTo: .contentOrigin)
+                .fromBottom(contentView.contentSize.height, relativeTo: .contentOrigin)
             
             let contentOrigin = targetOrigin(for: contentOriginPosition, boundsHeight: boundsHeight,
                 headerHeight: headerHeight)

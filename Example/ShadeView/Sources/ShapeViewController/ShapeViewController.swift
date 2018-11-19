@@ -29,7 +29,7 @@ final class ShapeViewController: UIViewController {
         tableView.register(ShapeCell.self, forCellReuseIdentifier: "\(ShapeCell.self)")
         
         cardView = CardView(contentView: tableView, headerView: headerView)
-        cardView.middlePosition = .fromBottom(Layout.middleInsetFromBottom)
+        cardView.middlePosition = .fromBottomIgnoringSafeArea(Layout.middleInsetFromBottom)
         cardView.cornerRadius = Layout.cornerRadius
         cardView.containerView.backgroundColor = .white
         cardView.layer.shadowRadius = Layout.shadowRadius
@@ -114,12 +114,12 @@ final class ShapeViewController: UIViewController {
         if orientation.isLandscape {
             portraitConstraints.forEach { $0.isActive = false }
             landscapeConstraints.forEach { $0.isActive = true }
-            cardView.topPosition = .fromSafeAreaTop(Layout.topInsetLandscape)
+            cardView.topPosition = .fromTop(Layout.topInsetLandscape)
             cardView.availableStates = [.top, .bottom]
         } else if orientation.isPortrait {
             landscapeConstraints.forEach { $0.isActive = false }
             portraitConstraints.forEach { $0.isActive = true }
-            cardView.topPosition = .fromSafeAreaTop(Layout.topInsetPortrait)
+            cardView.topPosition = .fromTop(Layout.topInsetPortrait)
             cardView.availableStates = [.top, .middle, .bottom]
         }
     }
