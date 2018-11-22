@@ -1,6 +1,6 @@
 PODS:
   - pop (1.0.10)
-  - ShadeView (0.1.5):
+  - ShadeView (0.1.11):
     - pop (~> 1.0)
 
 DEPENDENCIES:
@@ -16,7 +16,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
-  ShadeView: 7f6510e109daa62876d116338889b7d389126c00
+  ShadeView: 18c63bc3859a33e82763d362ae3ad59538270a02
 
 PODFILE CHECKSUM: dc28743ef0bbecf1ff4a8ce1a271cd5cb8e4b7fa
 

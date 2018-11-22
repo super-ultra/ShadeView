@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ShadeView'
-  s.version          = '0.1.10'
+  s.version          = '0.1.11'
   s.summary          = 'Simple swipe up view'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.

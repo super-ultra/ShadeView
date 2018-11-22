@@ -116,8 +116,8 @@ open class CardView: UIView {
         }
     }
     
-    /// Indicates whether or not the card view should fit their height in the 'top' state ignoring the content size
-    open var fitsHeight: Bool = false {
+    /// Indicates whether or not the anchors should be constrained by the content size
+    open var isConstrainedByContentSize: Bool = true {
         didSet {
             updateAnchors()
         }
@@ -251,18 +251,7 @@ open class CardView: UIView {
     }
     
     private func targetAnchorForTop(boundsHeight: CGFloat, headerHeight: CGFloat) -> CGFloat {
-        let candidate = targetOrigin(for: topPosition, boundsHeight: boundsHeight, headerHeight: headerHeight)
-        if fitsHeight {
-            return candidate
-        } else {
-            let contentOriginPosition: RelativePosition =
-                .fromBottom(contentView.contentSize.height, relativeTo: .contentOrigin)
-            
-            let contentOrigin = targetOrigin(for: contentOriginPosition, boundsHeight: boundsHeight,
-                headerHeight: headerHeight)
-            
-            return max(candidate, contentOrigin)
-        }
+        return targetOrigin(for: topPosition, boundsHeight: boundsHeight, headerHeight: headerHeight)
     }
     
     private func targetAnchorForMiddle(boundsHeight: CGFloat, headerHeight: CGFloat) -> CGFloat {
@@ -299,6 +288,25 @@ open class CardView: UIView {
     }
     
     private func targetOrigin(for position: RelativePosition, boundsHeight: CGFloat, headerHeight: CGFloat) -> CGFloat {
+        let candidate = targetOriginIgnoringContentSize(for: position, boundsHeight: boundsHeight,
+            headerHeight: headerHeight)
+        
+        if !isConstrainedByContentSize {
+            return candidate
+        } else {
+            let contentOriginPosition: RelativePosition =
+                .fromBottom(contentView.contentSize.height, relativeTo: .contentOrigin)
+
+            let contentOrigin = targetOriginIgnoringContentSize(for: contentOriginPosition, boundsHeight: boundsHeight,
+                headerHeight: headerHeight)
+
+            return max(candidate, contentOrigin)
+        }
+    }
+    
+    private func targetOriginIgnoringContentSize(for position: RelativePosition, boundsHeight: CGFloat,
+        headerHeight: CGFloat) -> CGFloat
+    {
         var result: CGFloat = position.offset
     
         switch (position.edge) {
