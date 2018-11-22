@@ -29,7 +29,7 @@ final class ShapeViewController: UIViewController {
         tableView.register(ShapeCell.self, forCellReuseIdentifier: "\(ShapeCell.self)")
         
         cardView = CardView(contentView: tableView, headerView: headerView)
-        cardView.middlePosition = .fromBottomIgnoringSafeArea(Layout.middleInsetFromBottom)
+        cardView.middlePosition = .fromBottom(Layout.middleInsetFromBottom)
         cardView.cornerRadius = Layout.cornerRadius
         cardView.containerView.backgroundColor = .white
         cardView.layer.shadowRadius = Layout.shadowRadius
