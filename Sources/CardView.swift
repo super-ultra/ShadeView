@@ -154,6 +154,20 @@ open class CardView: UIView {
         return targetAnchor(for: state, positionDependencies: positionDependencies)
     }
     
+    open var cornerRadius: CGFloat {
+        set {
+            if newValue > 0 {
+                containerView.mask = CornerRadiusMaskView(radius: newValue)
+                containerView.mask?.frame = bounds
+            } else {
+                containerView.mask = nil
+            }
+        }
+        get {
+            return (containerView.mask as? CornerRadiusMaskView)?.radius ?? 0
+        }
+    }
+    
     open func addListener(_ listener: CardViewListener) {
         notifier.subscribe(listener)
     }
@@ -175,6 +189,8 @@ open class CardView: UIView {
     
     open override func layoutSubviews() {
         super.layoutSubviews()
+        
+        containerView.mask?.frame = bounds
         
         let prevState = state
         

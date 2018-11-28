@@ -2,7 +2,7 @@ import UIKit
 
 internal extension UIImage {
     
-    internal static func make(byRoundingCorners corners: UIRectCorner, radius: CGFloat) -> UIImage? {
+    static func make(byRoundingCorners corners: UIRectCorner, radius: CGFloat) -> UIImage? {
         let rect = CGRect(origin: .zero, size: CGSize(width: radius * 2 + 1, height: radius * 2 + 1))
         let radii = CGSize(width: radius, height: radius)
         let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: radii)

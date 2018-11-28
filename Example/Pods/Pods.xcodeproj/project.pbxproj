@@ -10,26 +10,28 @@
 		009AD716C00CE2890066877CB4FA6E67 /* POPLayerExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 163D7E1F1808D22A22582A54D65F22C0 /* POPLayerExtras.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		026C1F242E8174AA001647932E7B6D34 /* TransformationMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33209F2779C28AAAF8820313E19AFA2D /* TransformationMatrix.cpp */; };
 		07DE5C92ECBC74E3DC582BD42D1CEE1D /* POPGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 859DC7EEA08FA0FEDC358C0B045B7B01 /* POPGeometry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		08674869047B322E9CA5B66E4EC37813 /* Collection+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8F010237A25D2640BE110F4661586 /* Collection+Utils.swift */; };
 		0AE6F264EE6A8D7EE6942EE7F7536FC5 /* POPAnimationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F31664A6540AF20C1036E6DADA85A28 /* POPAnimationInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		0CFDB9D21A915F7BB599DCF33F4ACA3D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C3032B23B9D8AB1A0456DDC9B31462 /* UIKit.framework */; };
-		13B356471449FD5CE93AF5EF6EE98CE1 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5C4ADD7576CAEDAD20060234CCB986 /* UIView+AutoLayout.swift */; };
+		1757E97B3B736163326445C66D4CF384 /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3266BD5D46A35A7524DDAC3C19F81593 /* Notifier.swift */; };
 		1BB463379765BC8119F80B1057C0A973 /* POPCGUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = A8C6ECB7C39A6DD9285A320AFFBA023A /* POPCGUtils.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		1DBEEDEDE9469AACB3C3AB2CE6EDAE53 /* UIScrollView+ShadeViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A655219FBF7BD998C04C1BA7214716 /* UIScrollView+ShadeViewContent.swift */; };
 		1DD768E03F9732C86453F87449985145 /* Pods-ShadeView_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E676620728BE1FB165AB6AA1F17F7CEB /* Pods-ShadeView_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		20E738D969A8D825E6F877DEB0819A20 /* POPVector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 548F5858F46FC103F8921C662EAC49EA /* POPVector.mm */; };
 		23F44ABCE4DF52D0F88CBA77BC1EFB63 /* POPBasicAnimationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C4F6339E3A5F905CF087CD23222A4F5 /* POPBasicAnimationInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		24F4B626333FA619F2C6597AEF72E412 /* Clamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1566E1D1B89A7DFD0C325B75B733C25 /* Clamp.swift */; };
 		269ADCE664EFB34FB97A15FE0A1CD8F0 /* POPAnimationExtras.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F9CFA8B3F4A3BF47A2FD77DBED7ECBD /* POPAnimationExtras.mm */; };
 		273ECFAA12DA50C903EE41DB56607AAB /* POPAnimationPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = D0CF05E8BDA61453F5A20E247EB61310 /* POPAnimationPrivate.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		2831A789B613578C07CC727D8AFE3B17 /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12275F3C9EA534AAA9AEE0CF6019AF64 /* pop.framework */; };
 		2E292967F53F6025E27639FBAFB59B48 /* POPAnimator.mm in Sources */ = {isa = PBXBuildFile; fileRef = EA8345F0882546D6704C8D56B04BF542 /* POPAnimator.mm */; };
+		2FBBBC45A94F0D8B2B0A9DF20C704703 /* ShadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C690893AD65AA9C093816A7981B62F /* ShadeView.swift */; };
+		3351E0F79C9AAAA134A74F2B67D2A3DA /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F907E0B669BFB4BF0AA407B81D1E336 /* UIView+AutoLayout.swift */; };
 		3DC7977236FB0F296021A408285ADFD0 /* POPSpringAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 99ACE7BAC871F4B900F985CB303CF28B /* POPSpringAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		40F572AC9A7F8ABCEA1CD228E63DBE63 /* POPAnimationEventInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBCC74D9771CE5FD77ACD9243869AF3 /* POPAnimationEventInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		419ED6DA53A865DEF95D7ABBF370E841 /* POPAnimationRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = CA551C89899817E84AB8D51CD542CFB3 /* POPAnimationRuntime.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		43FDB80E6ED18A0AB781B27961171C08 /* POPCustomAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = D4EE271BCDD8EA2B78C2C76EDD08EED9 /* POPCustomAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45F108B65AFC5C4458AF1C6313339A81 /* POPAnimationRuntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = B6F31248C870286401A01F5054F8EBFB /* POPAnimationRuntime.mm */; };
-		461C6E44C2AB0EB22BF986B05E6CB07A /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83015BC852E44EEEDA8AAAF1E93D2CC4 /* Notifier.swift */; };
 		464B3D4DE8DBCE496254956DDFF7091A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0354361FA05D9AD929677F7D9E7A5FE6 /* Foundation.framework */; };
-		48740F1467D61E7E68F59BB103A8D960 /* ShadeView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A821C4F5405F8815EA9D0A215B172125 /* ShadeView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		48740F1467D61E7E68F59BB103A8D960 /* ShadeView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 76570C438CF3421E0DC7943864E63B61 /* ShadeView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		48E983F7C9F5E604AFDAEA17B317DC54 /* POPDecayAnimationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 1509B507728E36957BBFC95B8B13A10A /* POPDecayAnimationInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		505592A49BB8A5F5905C8B430E8748D6 /* POPAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BF0E48016CF37551BDDC99CDB57D531 /* POPAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		50C3CBC99D9CF6AFA2D8F90C059DE799 /* POPAnimatableProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D0D03CB7E2C6A15602FD52C567739A /* POPAnimatableProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -42,8 +44,9 @@
 		73F9FB66ADA1BEBD36ECF967559BAAD8 /* POPPropertyAnimationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 11D47900DFF4B91C59EF451A598DC2C8 /* POPPropertyAnimationInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		742A9547C2C3265A90F2908EEE1B4B3C /* Pods-ShadeView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 846B04D04EDCD7ED4075647C9ED8EF21 /* Pods-ShadeView_Tests-dummy.m */; };
 		74CCD1EC0D8DAABDCAC2EE136C900EAC /* UnitBezier.h in Headers */ = {isa = PBXBuildFile; fileRef = D1625492F4EECFC6606DA7B483574E16 /* UnitBezier.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		7642CAE8F4D4FE9D8870C96C2DACA069 /* Collection+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB37F1EF0642BBE4F0B6B2156625AC0A /* Collection+Utils.swift */; };
+		76929E0780121671BC934DE22B9D7611 /* CornerRadiusMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B4888E8A2D8E1FF339A7E19B2E9DCF /* CornerRadiusMaskView.swift */; };
 		786E8A7AE9AB90FD84612BA022DB3668 /* POPSpringAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = E0521F4EC09E660F13B57BCAFB301005 /* POPSpringAnimation.mm */; };
+		7C5BB8E77A4ABF9E31BF26D3AF92A9C4 /* UIImage+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E18DF2997C49050253A95211386689 /* UIImage+Rounded.swift */; };
 		7D6D1673A81F82BB0AD7E02513E2C138 /* POPMath.h in Headers */ = {isa = PBXBuildFile; fileRef = C793764F242A25858B0F4FA44E69975E /* POPMath.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		807A62AFFEB8596018DFB1C8499D5802 /* POP.h in Headers */ = {isa = PBXBuildFile; fileRef = E5B5B55FE266C67AEE0362483FBE7C41 /* POP.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		80CFBAC780C649474ADD78F9052F57BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0354361FA05D9AD929677F7D9E7A5FE6 /* Foundation.framework */; };
@@ -54,37 +57,34 @@
 		A16D2894525C6212246C412E0EA8F1BA /* POPAnimatorPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 11615E46F91AA9C8E4427D5637C9A7B4 /* POPAnimatorPrivate.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A7CC8116EF23A686440D5D5325994092 /* FloatConversion.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BE418804B62E2EF3D3A2791353AFA74 /* FloatConversion.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		AE0C8CCBBF9F34AE7AA6BAF556519320 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0354361FA05D9AD929677F7D9E7A5FE6 /* Foundation.framework */; };
+		AF5FCB9683BF6DA4891934717DC34094 /* WeakCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656CB2B64B176D0BBCB245C31B0E3FF /* WeakCollection.swift */; };
 		B169008BC5F2D9E6CF48A9D42D0FF903 /* POPDecayAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 730E2D796379F75EA150FB93CBCE6205 /* POPDecayAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B31AF3B4A895C79DFEB643E1CD7A6A72 /* ShadeView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A97830622F696BE19FE5E6FE4A0AB4 /* ShadeView-dummy.m */; };
 		B36A9F3ACB88EC541F39B9BEC39EBDEC /* POPAnimatablePropertyTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E5E9055C9D0466B03D6F4C9E7407014 /* POPAnimatablePropertyTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4302D1A687F41A3051FA198BA5632FE /* UIScrollView+ShadeViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1F58D2B75B0DB5FB450425FD0A5606 /* UIScrollView+ShadeViewContent.swift */; };
 		B447358DE2A67540AE559A36E5EDDF37 /* POPGeometry.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0174E159AA5B38ADC2F12B4B5704D /* POPGeometry.mm */; };
 		B670CB6253CD487FEFD0B09F294A8545 /* POPAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 85190492AE5FF500BC8414858BDDA9DB /* POPAction.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		B711B828242CD7547E70F0965A9161B6 /* FloatingPoint+Projection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D442A1DDCB9193714EE4786289C207DB /* FloatingPoint+Projection.swift */; };
 		BB135C7F52B915699E5105810FE6199D /* POPCGUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = B4B0628CCEF1BB013E2BC0509BECD28E /* POPCGUtils.mm */; };
 		BB790D1A64996B5221457EBEAB0FB11B /* POPSpringAnimationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = F5356AA77260C4E2B7A364B51E7D8DDB /* POPSpringAnimationInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		BDFC5BC980170DAF44AE4F822E3B0900 /* POPAnimationEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A5BA6E404F60662A14C0CE475595D57 /* POPAnimationEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C47CCC8307929007625C580A9804DE99 /* POPAnimationTracer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8541F79D6D5C37CF8E9EA42B73CD7DE /* POPAnimationTracer.mm */; };
 		C48EDAB258E8FC0A5CCB5BE03A3574CC /* POPBasicAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = FAE11A24D81A0C0E7182F45235482510 /* POPBasicAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C67E31F8565928A8160F23AA58DAEA8E /* FloatingPoint+Projection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BBCEF564D63C1EA8C3F756E9B4BC11 /* FloatingPoint+Projection.swift */; };
 		C6B759E7BB38D95723827F249837C01A /* Pods-ShadeView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5A393FBC4CF9073E2323FB4B13CCE6 /* Pods-ShadeView_Example-dummy.m */; };
 		C8D81C5F1A66BA2C42FD4667A4B78F8E /* TransformationMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FB05E418C1987A80BBE187995545C6E /* TransformationMatrix.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		CAB4A55BB5E8CD04078BDA4314D631FB /* ShadeView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E498D308377293535BD8CA39E607DC88 /* ShadeView-dummy.m */; };
 		CB9FFA80671B913657C80278B9ACBD0E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0354361FA05D9AD929677F7D9E7A5FE6 /* Foundation.framework */; };
-		CFA27B7F66E3871E8D4AE878D8A5461E /* ShadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6EB4105C91765EE4C04B22468BA040 /* ShadeView.swift */; };
 		D10BC5064C0B9D61CA1270D6FDFF5BA6 /* POPAnimationEvent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0007C58D562FD97B79F9CD5642EAFC33 /* POPAnimationEvent.mm */; };
+		D4A7E7B120617426665B920D3B0F6816 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6E2ABB87D90B8537CEA7287EDE50F6 /* CardView.swift */; };
 		D50C14CF4A22DE9B737525BB22AA3313 /* POPMath.mm in Sources */ = {isa = PBXBuildFile; fileRef = F0CBBC9FC99DCDEFB5ED8CF8EC765902 /* POPMath.mm */; };
 		D5505EE3550AB2D50500D1AA1855B0BC /* Pods-ShadeView_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B5FB6C536AA6ACF556A5ADB100C00729 /* Pods-ShadeView_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D555C96BE25045A76C3BDCA68CDE5695 /* POPBasicAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 955B4A7467BE17E90578C781F39D39A5 /* POPBasicAnimation.mm */; };
-		DB541473F32E8E3FDB4F705240B75BFC /* ShadeViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6CA008ACDBB258E05815DA122AB571 /* ShadeViewContent.swift */; };
 		DC8CC1F0F9F5A3E7A966E7FADD0D01A7 /* POPAnimationExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EC858BFBA3A769000DB97BCB1AE188C /* POPAnimationExtras.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DCF38FB56A76E6DE6C0FE4B319A774A9 /* UIImage+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1D4D49AA3677AA7B33091EB4A2205C /* UIImage+Rounded.swift */; };
-		DE7DE532583C1980F37F3EFBEB926772 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D64792D684FA4ED41B158DDBD1323D /* CardView.swift */; };
-		E19B69FEE1E638ECBEB3A3A65FC7DB68 /* CardView+CornerRadiusMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22161F70C14BBD9E79246698CC43A2D2 /* CardView+CornerRadiusMask.swift */; };
 		E578E7548C4690EEF6164FD7A289A68C /* POPCustomAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E07F8FD28D3CE9584AB1E7ADD0CA7 /* POPCustomAnimation.mm */; };
+		E61DE90F1F4FFE33B844EDEA4BA951F3 /* ShadeViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBDF0E23DB19F04AEA632182882C226 /* ShadeViewContent.swift */; };
 		EB0742E0EF075D21C6996FEFC542D4C5 /* POPAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D86042F6D99BBB529E4335C6F229236 /* POPAnimation.mm */; };
 		EB7EA4C55C123772F574887C889FD602 /* POPAnimationTracer.h in Headers */ = {isa = PBXBuildFile; fileRef = 377B0075E31B7E3E7D94CF395D8B66CD /* POPAnimationTracer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EDA6CFF2A1976BE6B1240964F836F73B /* WeakCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF208EB795E6C00FE2DD9B0AB79E337 /* WeakCollection.swift */; };
 		F02FA48B57C9CA3CA54B84744C52B793 /* POPDecayAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD96340E5657B3CF7EE51CBEE2EC628A /* POPDecayAnimation.mm */; };
 		F87168E4E7A15295F79B97AE3A0CB51E /* pop-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBC0A0F4BAAE0B916631DCCEC397EB4 /* pop-dummy.m */; };
-		FA9179C58AE72B0AFCAF4148DAA0315A /* Clamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CF2858DC29EBEC1A06E41CAA2F0366 /* Clamp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +121,7 @@
 /* Begin PBXFileReference section */
 		0007C58D562FD97B79F9CD5642EAFC33 /* POPAnimationEvent.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimationEvent.mm; path = pop/POPAnimationEvent.mm; sourceTree = "<group>"; };
 		0354361FA05D9AD929677F7D9E7A5FE6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		04E18DF2997C49050253A95211386689 /* UIImage+Rounded.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Rounded.swift"; sourceTree = "<group>"; };
 		072C0C4256902D31D6B1C6DB70A38A5D /* pop-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "pop-umbrella.h"; sourceTree = "<group>"; };
 		0A5BA6E404F60662A14C0CE475595D57 /* POPAnimationEvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationEvent.h; path = pop/POPAnimationEvent.h; sourceTree = "<group>"; };
 		0C4F6339E3A5F905CF087CD23222A4F5 /* POPBasicAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPBasicAnimationInternal.h; path = pop/POPBasicAnimationInternal.h; sourceTree = "<group>"; };
@@ -133,98 +134,97 @@
 		165721D71989E9396DAB460CE8FEE226 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		180A6F5C9888DECCFE2F65C696463CE6 /* POPLayerExtras.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPLayerExtras.mm; path = pop/POPLayerExtras.mm; sourceTree = "<group>"; };
 		1A628E1CFFE7EB0391DD6E0425D6EF5D /* pop-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "pop-prefix.pch"; sourceTree = "<group>"; };
-		1D6EB4105C91765EE4C04B22468BA040 /* ShadeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShadeView.swift; path = Sources/ShadeView.swift; sourceTree = "<group>"; };
+		1B1F58D2B75B0DB5FB450425FD0A5606 /* UIScrollView+ShadeViewContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIScrollView+ShadeViewContent.swift"; path = "Sources/UIScrollView+ShadeViewContent.swift"; sourceTree = "<group>"; };
 		1F9CFA8B3F4A3BF47A2FD77DBED7ECBD /* POPAnimationExtras.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimationExtras.mm; path = pop/POPAnimationExtras.mm; sourceTree = "<group>"; };
 		202F271335EFADD9AE6027B63868340D /* Pods-ShadeView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ShadeView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		22161F70C14BBD9E79246698CC43A2D2 /* CardView+CornerRadiusMask.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CardView+CornerRadiusMask.swift"; path = "Sources/CardView+CornerRadiusMask.swift"; sourceTree = "<group>"; };
+		25B4888E8A2D8E1FF339A7E19B2E9DCF /* CornerRadiusMaskView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CornerRadiusMaskView.swift; sourceTree = "<group>"; };
+		27C690893AD65AA9C093816A7981B62F /* ShadeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShadeView.swift; path = Sources/ShadeView.swift; sourceTree = "<group>"; };
 		27D0D03CB7E2C6A15602FD52C567739A /* POPAnimatableProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimatableProperty.h; path = pop/POPAnimatableProperty.h; sourceTree = "<group>"; };
 		2F31664A6540AF20C1036E6DADA85A28 /* POPAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationInternal.h; path = pop/POPAnimationInternal.h; sourceTree = "<group>"; };
+		2FC8F010237A25D2640BE110F4661586 /* Collection+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Collection+Utils.swift"; sourceTree = "<group>"; };
+		3266BD5D46A35A7524DDAC3C19F81593 /* Notifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		33209F2779C28AAAF8820313E19AFA2D /* TransformationMatrix.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = TransformationMatrix.cpp; path = pop/WebCore/TransformationMatrix.cpp; sourceTree = "<group>"; };
 		377B0075E31B7E3E7D94CF395D8B66CD /* POPAnimationTracer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationTracer.h; path = pop/POPAnimationTracer.h; sourceTree = "<group>"; };
 		38D289DDCA027345040436A0CE220E62 /* Pods-ShadeView_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ShadeView_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		3A5C4ADD7576CAEDAD20060234CCB986 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		3C3D100BC4506B6E92A605369BCD2743 /* Pods-ShadeView_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ShadeView_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		3C6CA008ACDBB258E05815DA122AB571 /* ShadeViewContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShadeViewContent.swift; path = Sources/ShadeViewContent.swift; sourceTree = "<group>"; };
+		3F907E0B669BFB4BF0AA407B81D1E336 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		49BBCEF564D63C1EA8C3F756E9B4BC11 /* FloatingPoint+Projection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+Projection.swift"; sourceTree = "<group>"; };
 		52C3032B23B9D8AB1A0456DDC9B31462 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		53A97830622F696BE19FE5E6FE4A0AB4 /* ShadeView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ShadeView-dummy.m"; sourceTree = "<group>"; };
 		548F5858F46FC103F8921C662EAC49EA /* POPVector.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPVector.mm; path = pop/POPVector.mm; sourceTree = "<group>"; };
+		5656CB2B64B176D0BBCB245C31B0E3FF /* WeakCollection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeakCollection.swift; sourceTree = "<group>"; };
 		5BB0174E159AA5B38ADC2F12B4B5704D /* POPGeometry.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPGeometry.mm; path = pop/POPGeometry.mm; sourceTree = "<group>"; };
 		60D41CF2BF3BE572EC5205CD11F7E2CD /* Pods_ShadeView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ShadeView_Tests.framework; path = "Pods-ShadeView_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6110A224CA74E3C82289BCA5E44FC458 /* pop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = pop.xcconfig; sourceTree = "<group>"; };
 		61C697BEA07557EF4F4AD09EB1AB2251 /* Pods-ShadeView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ShadeView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		61E67974D116F749200BEABDBF69C795 /* Pods-ShadeView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ShadeView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		62A655219FBF7BD998C04C1BA7214716 /* UIScrollView+ShadeViewContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIScrollView+ShadeViewContent.swift"; path = "Sources/UIScrollView+ShadeViewContent.swift"; sourceTree = "<group>"; };
-		662758A62715D15BEC584CE7E883B5B4 /* ShadeView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = ShadeView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		6C96728965CEA9195F85B171B12F7802 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		6DF208EB795E6C00FE2DD9B0AB79E337 /* WeakCollection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeakCollection.swift; sourceTree = "<group>"; };
 		730E2D796379F75EA150FB93CBCE6205 /* POPDecayAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPDecayAnimation.h; path = pop/POPDecayAnimation.h; sourceTree = "<group>"; };
+		76570C438CF3421E0DC7943864E63B61 /* ShadeView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ShadeView-umbrella.h"; sourceTree = "<group>"; };
 		7944F405B89072959DEF5A34FACC7061 /* Pods-ShadeView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ShadeView_Tests.modulemap"; sourceTree = "<group>"; };
 		7BE418804B62E2EF3D3A2791353AFA74 /* FloatConversion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FloatConversion.h; path = pop/WebCore/FloatConversion.h; sourceTree = "<group>"; };
+		7C2B1FD0D7CD10CE9D44EE0905280D3C /* ShadeView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ShadeView-prefix.pch"; sourceTree = "<group>"; };
 		7D0D155BDE40D0D16959F1187B81A1B9 /* Pods-ShadeView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ShadeView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		7D86042F6D99BBB529E4335C6F229236 /* POPAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimation.mm; path = pop/POPAnimation.mm; sourceTree = "<group>"; };
+		7DBDF0E23DB19F04AEA632182882C226 /* ShadeViewContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShadeViewContent.swift; path = Sources/ShadeViewContent.swift; sourceTree = "<group>"; };
 		7EC858BFBA3A769000DB97BCB1AE188C /* POPAnimationExtras.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationExtras.h; path = pop/POPAnimationExtras.h; sourceTree = "<group>"; };
 		7FB05E418C1987A80BBE187995545C6E /* TransformationMatrix.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TransformationMatrix.h; path = pop/WebCore/TransformationMatrix.h; sourceTree = "<group>"; };
-		83015BC852E44EEEDA8AAAF1E93D2CC4 /* Notifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		846B04D04EDCD7ED4075647C9ED8EF21 /* Pods-ShadeView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ShadeView_Tests-dummy.m"; sourceTree = "<group>"; };
 		84C89F84013635D3E6909EF508A8F788 /* POPAnimator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimator.h; path = pop/POPAnimator.h; sourceTree = "<group>"; };
 		85190492AE5FF500BC8414858BDDA9DB /* POPAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAction.h; path = pop/POPAction.h; sourceTree = "<group>"; };
 		859DC7EEA08FA0FEDC358C0B045B7B01 /* POPGeometry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPGeometry.h; path = pop/POPGeometry.h; sourceTree = "<group>"; };
-		881DDE8DDC026BC0B1F8991663F84801 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		886BDB159AB643DD785338EE089349D2 /* Pods_ShadeView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ShadeView_Example.framework; path = "Pods-ShadeView_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A1D4D49AA3677AA7B33091EB4A2205C /* UIImage+Rounded.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Rounded.swift"; sourceTree = "<group>"; };
 		8B5E07F8FD28D3CE9584AB1E7ADD0CA7 /* POPCustomAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPCustomAnimation.mm; path = pop/POPCustomAnimation.mm; sourceTree = "<group>"; };
 		8BD4C7BF1D4867A40B5ABC6E69868BA1 /* pop.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = pop.modulemap; sourceTree = "<group>"; };
 		8CD16F661D3F89BA25DBAB4A5273F6F0 /* POPPropertyAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPPropertyAnimation.h; path = pop/POPPropertyAnimation.h; sourceTree = "<group>"; };
+		90C08BA512388B8FA46A413631389AF7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		936F909A171E44AE8D63C0D091E04531 /* Pods-ShadeView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ShadeView_Example-frameworks.sh"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		955B4A7467BE17E90578C781F39D39A5 /* POPBasicAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPBasicAnimation.mm; path = pop/POPBasicAnimation.mm; sourceTree = "<group>"; };
 		99ACE7BAC871F4B900F985CB303CF28B /* POPSpringAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPSpringAnimation.h; path = pop/POPSpringAnimation.h; sourceTree = "<group>"; };
-		99BC84BEC60152E0BA0CFBCE6C16E223 /* ShadeView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ShadeView-prefix.pch"; sourceTree = "<group>"; };
-		9B1583E341300E2367DB56BA5A809D0A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		9B59B45318D13E2B6087648BAD98652A /* Pods-ShadeView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ShadeView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		9BF0E48016CF37551BDDC99CDB57D531 /* POPAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimation.h; path = pop/POPAnimation.h; sourceTree = "<group>"; };
+		9C5F18D2FC5D246446081D1722B7853F /* ShadeView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ShadeView.xcconfig; sourceTree = "<group>"; };
 		9E5E9055C9D0466B03D6F4C9E7407014 /* POPAnimatablePropertyTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimatablePropertyTypes.h; path = pop/POPAnimatablePropertyTypes.h; sourceTree = "<group>"; };
 		9FBD66CDF329DB1428C6C45221FEAFE6 /* ShadeView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ShadeView.framework; path = ShadeView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0AC85D106BA6F06F4BA797655A54FF6 /* POPSpringSolver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPSpringSolver.h; path = pop/POPSpringSolver.h; sourceTree = "<group>"; };
-		A23F05603169B52FEC0FC5F3EA9A9A40 /* ShadeView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ShadeView.modulemap; sourceTree = "<group>"; };
 		A8107B09F90DC52D0679BB48860567DF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A821C4F5405F8815EA9D0A215B172125 /* ShadeView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ShadeView-umbrella.h"; sourceTree = "<group>"; };
 		A8C6ECB7C39A6DD9285A320AFFBA023A /* POPCGUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPCGUtils.h; path = pop/POPCGUtils.h; sourceTree = "<group>"; };
 		A972839E1256E5B745D828284AA60D9B /* POPAnimationTracerInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationTracerInternal.h; path = pop/POPAnimationTracerInternal.h; sourceTree = "<group>"; };
 		AA5BC6EFE116637F3F2F3EFB5BABA9AF /* Pods-ShadeView_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ShadeView_Example-resources.sh"; sourceTree = "<group>"; };
 		ACAA76148FD72A241B673F1D298D1A3A /* POPVector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPVector.h; path = pop/POPVector.h; sourceTree = "<group>"; };
-		B1D64792D684FA4ED41B158DDBD1323D /* CardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardView.swift; path = Sources/CardView.swift; sourceTree = "<group>"; };
+		B2696B360A5E5FEA0F01258CB481B62D /* ShadeView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = ShadeView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B4B0628CCEF1BB013E2BC0509BECD28E /* POPCGUtils.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPCGUtils.mm; path = pop/POPCGUtils.mm; sourceTree = "<group>"; };
 		B5FB6C536AA6ACF556A5ADB100C00729 /* Pods-ShadeView_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ShadeView_Tests-umbrella.h"; sourceTree = "<group>"; };
 		B6F31248C870286401A01F5054F8EBFB /* POPAnimationRuntime.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimationRuntime.mm; path = pop/POPAnimationRuntime.mm; sourceTree = "<group>"; };
 		B8BCED29E89E20A5AC750279C955C520 /* Pods-ShadeView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ShadeView_Example.modulemap"; sourceTree = "<group>"; };
-		B9C969926194C4A90EE341B41B0E97B7 /* ShadeView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ShadeView.xcconfig; sourceTree = "<group>"; };
 		BD96340E5657B3CF7EE51CBEE2EC628A /* POPDecayAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPDecayAnimation.mm; path = pop/POPDecayAnimation.mm; sourceTree = "<group>"; };
 		BF5A393FBC4CF9073E2323FB4B13CCE6 /* Pods-ShadeView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ShadeView_Example-dummy.m"; sourceTree = "<group>"; };
 		C568E05C2B0308C4EDC7056C4B2A8862 /* POPDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPDefines.h; path = pop/POPDefines.h; sourceTree = "<group>"; };
 		C793764F242A25858B0F4FA44E69975E /* POPMath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPMath.h; path = pop/POPMath.h; sourceTree = "<group>"; };
 		CA551C89899817E84AB8D51CD542CFB3 /* POPAnimationRuntime.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationRuntime.h; path = pop/POPAnimationRuntime.h; sourceTree = "<group>"; };
+		CFB00F92DF2552815255905282905CCF /* ShadeView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ShadeView.modulemap; sourceTree = "<group>"; };
 		CFBCC74D9771CE5FD77ACD9243869AF3 /* POPAnimationEventInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationEventInternal.h; path = pop/POPAnimationEventInternal.h; sourceTree = "<group>"; };
 		D0CF05E8BDA61453F5A20E247EB61310 /* POPAnimationPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationPrivate.h; path = pop/POPAnimationPrivate.h; sourceTree = "<group>"; };
 		D1625492F4EECFC6606DA7B483574E16 /* UnitBezier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UnitBezier.h; path = pop/WebCore/UnitBezier.h; sourceTree = "<group>"; };
-		D442A1DDCB9193714EE4786289C207DB /* FloatingPoint+Projection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+Projection.swift"; sourceTree = "<group>"; };
 		D46AEC7D7C35D751C8C9713466F4EBBF /* Pods-ShadeView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ShadeView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		D4EE271BCDD8EA2B78C2C76EDD08EED9 /* POPCustomAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPCustomAnimation.h; path = pop/POPCustomAnimation.h; sourceTree = "<group>"; };
 		D6AD40D95C7E99265D19C1CADF98951F /* POPAnimatableProperty.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimatableProperty.mm; path = pop/POPAnimatableProperty.mm; sourceTree = "<group>"; };
 		E03A5C42BC93219760B5FD530167A013 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0521F4EC09E660F13B57BCAFB301005 /* POPSpringAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPSpringAnimation.mm; path = pop/POPSpringAnimation.mm; sourceTree = "<group>"; };
+		E1566E1D1B89A7DFD0C325B75B733C25 /* Clamp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Clamp.swift; sourceTree = "<group>"; };
+		E3A656A1067CB2CB21023468458EB398 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		E498D308377293535BD8CA39E607DC88 /* ShadeView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ShadeView-dummy.m"; sourceTree = "<group>"; };
 		E5B5B55FE266C67AEE0362483FBE7C41 /* POP.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POP.h; path = pop/POP.h; sourceTree = "<group>"; };
 		E676620728BE1FB165AB6AA1F17F7CEB /* Pods-ShadeView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ShadeView_Example-umbrella.h"; sourceTree = "<group>"; };
 		E8541F79D6D5C37CF8E9EA42B73CD7DE /* POPAnimationTracer.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimationTracer.mm; path = pop/POPAnimationTracer.mm; sourceTree = "<group>"; };
 		E91DC935FE543758D3B69E36EDE76F5C /* Pods-ShadeView_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ShadeView_Tests-resources.sh"; sourceTree = "<group>"; };
-		E9CF2858DC29EBEC1A06E41CAA2F0366 /* Clamp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Clamp.swift; sourceTree = "<group>"; };
 		EA8345F0882546D6704C8D56B04BF542 /* POPAnimator.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimator.mm; path = pop/POPAnimator.mm; sourceTree = "<group>"; };
-		EB37F1EF0642BBE4F0B6B2156625AC0A /* Collection+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Collection+Utils.swift"; sourceTree = "<group>"; };
 		ED31D1ACCF5C1249EB0F9DB0C355DBBD /* POPPropertyAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPPropertyAnimation.mm; path = pop/POPPropertyAnimation.mm; sourceTree = "<group>"; };
 		EFB9572481E20AA7F690A94B1B14822F /* Pods-ShadeView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ShadeView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		F0CBBC9FC99DCDEFB5ED8CF8EC765902 /* POPMath.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPMath.mm; path = pop/POPMath.mm; sourceTree = "<group>"; };
 		F5356AA77260C4E2B7A364B51E7D8DDB /* POPSpringAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPSpringAnimationInternal.h; path = pop/POPSpringAnimationInternal.h; sourceTree = "<group>"; };
+		F7F723E4C52A98EEC0C9CFE1EA7D5BF9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAE11A24D81A0C0E7182F45235482510 /* POPBasicAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPBasicAnimation.h; path = pop/POPBasicAnimation.h; sourceTree = "<group>"; };
+		FB6E2ABB87D90B8537CEA7287EDE50F6 /* CardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardView.swift; path = Sources/CardView.swift; sourceTree = "<group>"; };
 		FBBC0A0F4BAAE0B916631DCCEC397EB4 /* pop-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "pop-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -266,26 +266,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		15D8B9477002A67A4F5B1CC04BB06516 /* Support Files */ = {
+		0F5E2FCF80E0D126103FDF9AECF3710D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				881DDE8DDC026BC0B1F8991663F84801 /* Info.plist */,
-				A23F05603169B52FEC0FC5F3EA9A9A40 /* ShadeView.modulemap */,
-				B9C969926194C4A90EE341B41B0E97B7 /* ShadeView.xcconfig */,
-				53A97830622F696BE19FE5E6FE4A0AB4 /* ShadeView-dummy.m */,
-				99BC84BEC60152E0BA0CFBCE6C16E223 /* ShadeView-prefix.pch */,
-				A821C4F5405F8815EA9D0A215B172125 /* ShadeView-umbrella.h */,
+				E1566E1D1B89A7DFD0C325B75B733C25 /* Clamp.swift */,
+				2FC8F010237A25D2640BE110F4661586 /* Collection+Utils.swift */,
+				25B4888E8A2D8E1FF339A7E19B2E9DCF /* CornerRadiusMaskView.swift */,
+				49BBCEF564D63C1EA8C3F756E9B4BC11 /* FloatingPoint+Projection.swift */,
+				3266BD5D46A35A7524DDAC3C19F81593 /* Notifier.swift */,
+				04E18DF2997C49050253A95211386689 /* UIImage+Rounded.swift */,
+				3F907E0B669BFB4BF0AA407B81D1E336 /* UIView+AutoLayout.swift */,
+				5656CB2B64B176D0BBCB245C31B0E3FF /* WeakCollection.swift */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/ShadeView";
-			sourceTree = "<group>";
-		};
-		16FF2DA698DD4FD327CEEBD30C99DCA2 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				85B8322C6F96ED81ACCC14EC8458F31D /* ShadeView */,
-			);
-			name = "Development Pods";
+			name = Utils;
+			path = Sources/Utils;
 			sourceTree = "<group>";
 		};
 		17F7CDF352E9D694BE6EB934C9DC1B8C /* Pods */ = {
@@ -294,21 +288,6 @@
 				A6F132F85A0B43AB02F47BF9686D8D5B /* pop */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		2BD641412FB432CB9AA5B881989CD35A /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				E9CF2858DC29EBEC1A06E41CAA2F0366 /* Clamp.swift */,
-				EB37F1EF0642BBE4F0B6B2156625AC0A /* Collection+Utils.swift */,
-				D442A1DDCB9193714EE4786289C207DB /* FloatingPoint+Projection.swift */,
-				83015BC852E44EEEDA8AAAF1E93D2CC4 /* Notifier.swift */,
-				8A1D4D49AA3677AA7B33091EB4A2205C /* UIImage+Rounded.swift */,
-				3A5C4ADD7576CAEDAD20060234CCB986 /* UIView+AutoLayout.swift */,
-				6DF208EB795E6C00FE2DD9B0AB79E337 /* WeakCollection.swift */,
-			);
-			name = Utils;
-			path = Sources/Utils;
 			sourceTree = "<group>";
 		};
 		51F076EDB77967F854308753DC3059DE /* Products */ = {
@@ -345,16 +324,6 @@
 			path = "../Target Support Files/pop";
 			sourceTree = "<group>";
 		};
-		707CCFFC99E796A941775BA89D0635D6 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				6C96728965CEA9195F85B171B12F7802 /* LICENSE */,
-				9B1583E341300E2367DB56BA5A809D0A /* README.md */,
-				662758A62715D15BEC584CE7E883B5B4 /* ShadeView.podspec */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
 		7B0F3FFB9AC766D12EC7E1AF92E9222D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,7 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				16FF2DA698DD4FD327CEEBD30C99DCA2 /* Development Pods */,
+				D256872A81F01BDDB829FBF1E8525E43 /* Development Pods */,
 				7B0F3FFB9AC766D12EC7E1AF92E9222D /* Frameworks */,
 				17F7CDF352E9D694BE6EB934C9DC1B8C /* Pods */,
 				51F076EDB77967F854308753DC3059DE /* Products */,
@@ -394,17 +363,30 @@
 			path = "Target Support Files/Pods-ShadeView_Example";
 			sourceTree = "<group>";
 		};
-		85B8322C6F96ED81ACCC14EC8458F31D /* ShadeView */ = {
+		8617C6372C04C5CC3C109554985294B5 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				B1D64792D684FA4ED41B158DDBD1323D /* CardView.swift */,
-				22161F70C14BBD9E79246698CC43A2D2 /* CardView+CornerRadiusMask.swift */,
-				1D6EB4105C91765EE4C04B22468BA040 /* ShadeView.swift */,
-				3C6CA008ACDBB258E05815DA122AB571 /* ShadeViewContent.swift */,
-				62A655219FBF7BD998C04C1BA7214716 /* UIScrollView+ShadeViewContent.swift */,
-				707CCFFC99E796A941775BA89D0635D6 /* Pod */,
-				15D8B9477002A67A4F5B1CC04BB06516 /* Support Files */,
-				2BD641412FB432CB9AA5B881989CD35A /* Utils */,
+				F7F723E4C52A98EEC0C9CFE1EA7D5BF9 /* Info.plist */,
+				CFB00F92DF2552815255905282905CCF /* ShadeView.modulemap */,
+				9C5F18D2FC5D246446081D1722B7853F /* ShadeView.xcconfig */,
+				E498D308377293535BD8CA39E607DC88 /* ShadeView-dummy.m */,
+				7C2B1FD0D7CD10CE9D44EE0905280D3C /* ShadeView-prefix.pch */,
+				76570C438CF3421E0DC7943864E63B61 /* ShadeView-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/ShadeView";
+			sourceTree = "<group>";
+		};
+		8B67D957FA756403B2F8BBBED6F8AF0B /* ShadeView */ = {
+			isa = PBXGroup;
+			children = (
+				FB6E2ABB87D90B8537CEA7287EDE50F6 /* CardView.swift */,
+				27C690893AD65AA9C093816A7981B62F /* ShadeView.swift */,
+				7DBDF0E23DB19F04AEA632182882C226 /* ShadeViewContent.swift */,
+				1B1F58D2B75B0DB5FB450425FD0A5606 /* UIScrollView+ShadeViewContent.swift */,
+				CB0EE767C5F3441902FA14F2779491BC /* Pod */,
+				8617C6372C04C5CC3C109554985294B5 /* Support Files */,
+				0F5E2FCF80E0D126103FDF9AECF3710D /* Utils */,
 			);
 			name = ShadeView;
 			path = ../..;
@@ -487,6 +469,24 @@
 			);
 			name = pop;
 			path = pop;
+			sourceTree = "<group>";
+		};
+		CB0EE767C5F3441902FA14F2779491BC /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				E3A656A1067CB2CB21023468458EB398 /* LICENSE */,
+				90C08BA512388B8FA46A413631389AF7 /* README.md */,
+				B2696B360A5E5FEA0F01258CB481B62D /* ShadeView.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		D256872A81F01BDDB829FBF1E8525E43 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8B67D957FA756403B2F8BBBED6F8AF0B /* ShadeView */,
+			);
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 		DAC4F02DF5C66200534811B5A73F302B /* Targets Support Files */ = {
@@ -595,7 +595,7 @@
 			buildConfigurationList = 927B0CE92F5DFCC4FE47D891BFD419DF /* Build configuration list for PBXNativeTarget "ShadeView" */;
 			buildPhases = (
 				FDF991D5FE2398422948DB4198FACF41 /* Headers */,
-				E05339DAB00149689622D041DCA4914A /* Sources */,
+				886923313150C166B4939FB12F05E32B /* Sources */,
 				4E948308848F74FEEA6D3E7D96AF3129 /* Frameworks */,
 				393B4B28C61A18DEED7C0958605633DF /* Resources */,
 			);
@@ -741,31 +741,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		886923313150C166B4939FB12F05E32B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4A7E7B120617426665B920D3B0F6816 /* CardView.swift in Sources */,
+				24F4B626333FA619F2C6597AEF72E412 /* Clamp.swift in Sources */,
+				08674869047B322E9CA5B66E4EC37813 /* Collection+Utils.swift in Sources */,
+				76929E0780121671BC934DE22B9D7611 /* CornerRadiusMaskView.swift in Sources */,
+				C67E31F8565928A8160F23AA58DAEA8E /* FloatingPoint+Projection.swift in Sources */,
+				1757E97B3B736163326445C66D4CF384 /* Notifier.swift in Sources */,
+				CAB4A55BB5E8CD04078BDA4314D631FB /* ShadeView-dummy.m in Sources */,
+				2FBBBC45A94F0D8B2B0A9DF20C704703 /* ShadeView.swift in Sources */,
+				E61DE90F1F4FFE33B844EDEA4BA951F3 /* ShadeViewContent.swift in Sources */,
+				7C5BB8E77A4ABF9E31BF26D3AF92A9C4 /* UIImage+Rounded.swift in Sources */,
+				B4302D1A687F41A3051FA198BA5632FE /* UIScrollView+ShadeViewContent.swift in Sources */,
+				3351E0F79C9AAAA134A74F2B67D2A3DA /* UIView+AutoLayout.swift in Sources */,
+				AF5FCB9683BF6DA4891934717DC34094 /* WeakCollection.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BB80209B211C23481DB2161ABD1D247B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C6B759E7BB38D95723827F249837C01A /* Pods-ShadeView_Example-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E05339DAB00149689622D041DCA4914A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E19B69FEE1E638ECBEB3A3A65FC7DB68 /* CardView+CornerRadiusMask.swift in Sources */,
-				DE7DE532583C1980F37F3EFBEB926772 /* CardView.swift in Sources */,
-				FA9179C58AE72B0AFCAF4148DAA0315A /* Clamp.swift in Sources */,
-				7642CAE8F4D4FE9D8870C96C2DACA069 /* Collection+Utils.swift in Sources */,
-				B711B828242CD7547E70F0965A9161B6 /* FloatingPoint+Projection.swift in Sources */,
-				461C6E44C2AB0EB22BF986B05E6CB07A /* Notifier.swift in Sources */,
-				B31AF3B4A895C79DFEB643E1CD7A6A72 /* ShadeView-dummy.m in Sources */,
-				CFA27B7F66E3871E8D4AE878D8A5461E /* ShadeView.swift in Sources */,
-				DB541473F32E8E3FDB4F705240B75BFC /* ShadeViewContent.swift in Sources */,
-				DCF38FB56A76E6DE6C0FE4B319A774A9 /* UIImage+Rounded.swift in Sources */,
-				1DBEEDEDE9469AACB3C3AB2CE6EDAE53 /* UIScrollView+ShadeViewContent.swift in Sources */,
-				13B356471449FD5CE93AF5EF6EE98CE1 /* UIView+AutoLayout.swift in Sources */,
-				EDA6CFF2A1976BE6B1240964F836F73B /* WeakCollection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -931,7 +931,7 @@
 		};
 		5848187133680B28C644346297618762 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B9C969926194C4A90EE341B41B0E97B7 /* ShadeView.xcconfig */;
+			baseConfigurationReference = 9C5F18D2FC5D246446081D1722B7853F /* ShadeView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1059,7 +1059,7 @@
 		};
 		9A3FCFF065EA22601039B010551F89BE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B9C969926194C4A90EE341B41B0E97B7 /* ShadeView.xcconfig */;
+			baseConfigurationReference = 9C5F18D2FC5D246446081D1722B7853F /* ShadeView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
