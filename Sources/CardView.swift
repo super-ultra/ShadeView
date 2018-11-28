@@ -30,8 +30,13 @@ open class CardView: UIView {
         }
     
         public var offset: CGFloat
+        
         public var edge: Edge
+        
         public var point: Point
+        
+        /// Safe area is equal to .safeAreaInsets for iOS 11+.
+        /// For iOS 10 it contains only status bar.
         public var ignoresSafeArea: Bool
         
         init(offset: CGFloat, edge: Edge, point: Point = .cardOrigin, ignoresSafeArea: Bool = false) {
@@ -234,7 +239,16 @@ open class CardView: UIView {
         if #available(iOS 11.0, *) {
             return safeAreaInsets
         } else {
-            return .zero
+            var result: UIEdgeInsets = .zero
+            
+            let statusBarFrame = UIApplication.shared.statusBarFrame
+            if statusBarFrame != .zero { // if status bar in not hidden
+                if let maxY = window?.convert(statusBarFrame, to: self).maxY, maxY > 0 {
+                    result.top = maxY
+                }
+            }
+            
+            return result
         }
     }
     
