@@ -1,6 +1,6 @@
 {
   "name": "ShadeView",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "summary": "Simple swipe up view",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/super-ultra/ShadeView",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/super-ultra/ShadeView.git",
-    "tag": "0.1.11"
+    "tag": "0.1.12"
   },
   "platforms": {
     "ios": "9.0"
