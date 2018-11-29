@@ -24,11 +24,13 @@ final class ShapeViewController: UIViewController {
         headerView.heightAnchor.constraint(equalToConstant: Layout.headerHeight).isActive = true
         
         tableView.backgroundColor = .white
-        tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ShapeCell.self, forCellReuseIdentifier: "\(ShapeCell.self)")
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        }
         
-        cardView = CardView(contentView: tableView, headerView: headerView)
+        cardView = CardView(scrollView: tableView, delegate: self, headerView: headerView)
         cardView.middlePosition = .fromBottom(Layout.middleInsetFromBottom)
         cardView.cornerRadius = Layout.cornerRadius
         cardView.containerView.backgroundColor = .white

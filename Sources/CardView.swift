@@ -8,7 +8,7 @@ public protocol CardViewListener: class {
 
 open class CardView: UIView {
 
-    public typealias ContentView = ShadeView.ContentView
+    public typealias Content = ShadeView.Content
     public typealias OriginChangeSource = ShadeView.OriginChangeSource
 
     public enum State {
@@ -71,18 +71,18 @@ open class CardView: UIView {
         }
     }
 
-    public init(contentView: ContentView, headerView: UIView) {
-        shadeView = ShadeView(contentView: contentView, headerView: headerView)
+    public init(content: Content, headerView: UIView) {
+        shadeView = ShadeView(content: content, headerView: headerView)
  
         super.init(frame: .zero)
         
         setupViews()
-        contentView.addListener(self)
+        content.addListener(self)
         shadeView.addListener(self)
     }
     
-    open var contentView: ContentView {
-        return shadeView.contentView
+    open var content: Content {
+        return shadeView.content
     }
     
     open var headerView: UIView {
@@ -254,14 +254,14 @@ open class CardView: UIView {
     
     private func updateContentVisibility() {
         guard #available(iOS 11.0, *), safeAreaInsets.bottom > 0 else {
-            contentView.alpha = 1
+            content.view.alpha = 1
             return
         }
         
         let fadingDistance: CGFloat = 40
         
         let diff = anchor(for: .bottom) - origin
-        contentView.alpha = (diff / fadingDistance).clamped(to: 0...1)
+        content.view.alpha = (diff / fadingDistance).clamped(to: 0...1)
     }
     
     // MARK: - Private: Anchors
@@ -327,8 +327,8 @@ open class CardView: UIView {
         if !isConstrainedByContentSize {
             return candidate
         } else {
-            let contentOriginPosition: RelativePosition =
-                .fromBottom(contentView.contentSize.height, relativeTo: .contentOrigin)
+            let totalHeight = content.contentSize.height + content.contentInset.top + content.contentInset.bottom
+            let contentOriginPosition: RelativePosition = .fromBottom(totalHeight, relativeTo: .contentOrigin)
 
             let contentOrigin = CardView.targetOriginIgnoringContentSize(for: contentOriginPosition,
                 positionDependencies: positionDependencies)
@@ -391,16 +391,22 @@ extension CardView: ShadeViewListener {
 
 extension CardView: ShadeViewContentListener {
     
-    public func shadeViewContent(_ shadeViewContent: ShadeViewContent, didChangeContentOffset contentOffset: CGPoint) {
-        
-    }
-    
     public func shadeViewContent(_ shadeViewContent: ShadeViewContent, didChangeContentSize contentSize: CGSize) {
         updateAnchors()
     }
     
     public func shadeViewContent(_ shadeViewContent: ShadeViewContent, didChangeContentInset contentInset: UIEdgeInsets) {
-        
+        updateAnchors()
     }
+    
+    public func shadeViewContentDidScroll(_ shadeViewContent: ShadeViewContent) {
+    }
+    
+    public func shadeViewContentWillBeginDragging(_ shadeViewContent: ShadeViewContent) {
+    }
+    
+    public func shadeViewContentWillEndDragging(_ shadeViewContent: ShadeViewContent, withVelocity velocity: CGPoint,
+        targetContentOffset: UnsafeMutablePointer<CGPoint>)
+    {}
     
 }

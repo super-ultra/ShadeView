@@ -15,9 +15,9 @@ open class ShadeView: UIView {
         case program
     }
 
-    public typealias ContentView = UIView & ShadeViewContent
+    public typealias Content = ShadeViewContent
 
-    public let contentView: ContentView
+    public let content: Content
     
     public let headerView: UIView
     
@@ -38,8 +38,8 @@ open class ShadeView: UIView {
         }
     }
     
-    public init(contentView: ContentView, headerView: UIView) {
-        self.contentView = contentView
+    public init(content: Content, headerView: UIView) {
+        self.content = content
         self.headerView = headerView
         self.containerView = UIView()
         self.origin = 0
@@ -81,33 +81,16 @@ open class ShadeView: UIView {
     
     // MARK: - Private
     
-    private let gestureScrollView = UIScrollView()
-    
     private let notifier = Notifier<ShadeViewListener>()
     
     private var containerOriginConstraint: NSLayoutConstraint?
     
-    private var contentBottomConstraints: [NSLayoutConstraint] = []
-    
     private func setupViews() {
         addSubview(containerView)
     
-        gestureScrollView.addSubview(contentView)
-        contentView.isScrollEnabled = false
-        contentView.clipsToBounds = false
-        contentView.addListener(self)
-        
-        containerView.addSubview(gestureScrollView)
-        gestureScrollView.delegate = self
-        gestureScrollView.alwaysBounceVertical = true
-        gestureScrollView.keyboardDismissMode = .onDrag
-        gestureScrollView.scrollsToTop = false
-        gestureScrollView.showsVerticalScrollIndicator = false
-        gestureScrollView.clipsToBounds = false
-        
-        if #available(iOS 11.0, *) {
-            gestureScrollView.contentInsetAdjustmentBehavior = .never
-        }
+        containerView.addSubview(content.view)
+        content.view.clipsToBounds = false
+        content.addListener(self)
         
         containerView.addSubview(headerView)
         headerView.addGestureRecognizer(headerPanRecognizer)
@@ -120,19 +103,13 @@ open class ShadeView: UIView {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.set([.left, .right, .bottom], equalTo: self)
         containerOriginConstraint = containerView.set(.top, equalTo: self, constant: origin, priority: .fittingSizeLevel)
-        
-        contentBottomConstraints = []
     
-        for view in [gestureScrollView, contentView] {
-            view.translatesAutoresizingMaskIntoConstraints = false
-            view.set([.left, .right], equalTo: containerView)
-            view.set(.top, equalTo: headerView, attribute: .bottom)
-            
-            let bottomConstraint = view.set(.bottom, equalTo: containerView, attribute: .top,
-                constant: targetContentBottomPosition, priority: .fittingSizeLevel)
-            
-            contentBottomConstraints.append(bottomConstraint)
-        }
+        content.view.translatesAutoresizingMaskIntoConstraints = false
+        content.view.set([.left, .right], equalTo: containerView)
+        content.view.set(.top, equalTo: headerView, attribute: .bottom)
+        
+        contentBottomConstraint = content.view.set(.bottom, equalTo: containerView, attribute: .top,
+            constant: targetContentBottomPosition, priority: .fittingSizeLevel)
         
         headerView.translatesAutoresizingMaskIntoConstraints = false
         headerView.set([.left, .right, .top], equalTo: containerView)
@@ -154,10 +131,19 @@ open class ShadeView: UIView {
         notifier.forEach { $0.shadeView(self, didEndUpdatingOrigin: origin, source: source) }
     }
     
+    // MARK: - Private: Content
+    
+    private enum ContentState: Equatable {
+        case normal
+        case dragging(lastContentOffset: CGPoint)
+    }
+    
+    private var contentState: ContentState = .normal
+    
+    private var contentBottomConstraint: NSLayoutConstraint?
+    
     private func updateContentConstraints() {
-        for constraint in contentBottomConstraints {
-            constraint.constant = targetContentBottomPosition
-        }
+        contentBottomConstraint?.constant = targetContentBottomPosition
     }
     
     private var targetContentBottomPosition: CGFloat {
@@ -292,73 +278,63 @@ open class ShadeView: UIView {
 
 }
 
-extension ShadeView: UIScrollViewDelegate {
+extension ShadeView: ShadeViewContentListener {
+
+    public func shadeViewContent(_ shadeViewContent: ShadeViewContent, didChangeContentSize contentSize: CGSize) {
+    }
     
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if let limits = anchorLimits, scrollView.isTracking, isHeaderInteractionEnabled {
-            let diff = contentView.contentOffset.y - scrollView.contentOffset.y
+    public func shadeViewContent(_ shadeViewContent: ShadeViewContent, didChangeContentInset contentInset: UIEdgeInsets) {
+    }
+    
+    public func shadeViewContentDidScroll(_ shadeViewContent: ShadeViewContent) {
+        guard case let .dragging(lastContentOffset) = contentState else { return }
         
-            if (diff < 0 && origin > limits.lowerBound)
-                || (diff > 0 && scrollView.contentOffset.y < 0)
-            {
-                // Drop contentOffset changing
-                scrollView.delegate = nil
-                scrollView.contentOffset.y = 0
-                scrollView.delegate = self
-                
-                let newOrigin: CGFloat
-                
-                if diff > 0 {
-                    newOrigin = origin + diff
-                } else {
-                    newOrigin = (origin + diff).clamped(to: limits)
-                }
-                
-                setOrigin(newOrigin, source: .contentInteraction)
-            }
+        defer {
+            contentState = .dragging(lastContentOffset: shadeViewContent.contentOffset)
         }
         
-        if contentView.contentOffset != gestureScrollView.contentOffset {
-            contentView.contentOffset = gestureScrollView.contentOffset
+        guard let limits = anchorLimits, isHeaderInteractionEnabled else { return }
+        
+        let diff = lastContentOffset.y - shadeViewContent.contentOffset.y
+    
+        if (diff < 0 && origin > limits.lowerBound)
+            || (diff > 0 && shadeViewContent.contentOffset.y < -shadeViewContent.contentInset.top)
+        {
+            // Drop contentOffset changing
+            shadeViewContent.removeListener(self)
+            shadeViewContent.contentOffset.y = -shadeViewContent.contentInset.top
+            shadeViewContent.addListener(self)
+            
+            let newOrigin: CGFloat
+            
+            if diff > 0 {
+                newOrigin = origin + diff
+            } else {
+                newOrigin = (origin + diff).clamped(to: limits)
+            }
+            
+            setOrigin(newOrigin, source: .contentInteraction)
         }
     }
     
-    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    public func shadeViewContentWillBeginDragging(_ shadeViewContent: ShadeViewContent) {
+        contentState = .dragging(lastContentOffset: shadeViewContent.contentOffset)
+        
         stopOriginAnimation()
         notifyWillBeginUpdatingOrigin(with: .contentInteraction)
     }
     
-    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint,
+    public func shadeViewContentWillEndDragging(_ shadeViewContent: ShadeViewContent, withVelocity velocity: CGPoint,
         targetContentOffset: UnsafeMutablePointer<CGPoint>)
     {
+        contentState = .normal
+    
         guard let limits = anchorLimits, origin > limits.lowerBound else { return }
         
         /// Stop scrolling
-        targetContentOffset.pointee = scrollView.contentOffset
+        targetContentOffset.pointee = shadeViewContent.contentOffset
         
         moveOriginToTheNearestAnchor(withVelocity: -velocity.y, source: .contentInteraction)
-    }
-
-}
-
-extension ShadeView: ShadeViewContentListener {
-
-    public func shadeViewContent(_ shadeViewContent: ShadeViewContent, didChangeContentOffset contentOffset: CGPoint) {
-        if gestureScrollView.contentOffset != contentOffset {
-            gestureScrollView.contentOffset = contentOffset
-        }
-    }
-    
-    public func shadeViewContent(_ shadeViewContent: ShadeViewContent, didChangeContentSize contentSize: CGSize) {
-        if gestureScrollView.contentSize != contentSize {
-            gestureScrollView.contentSize = contentSize
-        }
-    }
-    
-    public func shadeViewContent(_ shadeViewContent: ShadeViewContent, didChangeContentInset contentInset: UIEdgeInsets) {
-        if gestureScrollView.contentInset != contentInset {
-            gestureScrollView.contentInset = contentInset
-        }
     }
     
 }
