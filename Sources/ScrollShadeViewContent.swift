@@ -19,6 +19,22 @@ open class ScrollShadeViewContent: NSObject {
         super.init()
         
         scrollView.delegate = self
+        
+        scrollViewObservations = [
+            scrollView.observe(\.contentSize, options: .new) { [weak self] _, value in
+                guard let slf = self, let newValue = value.newValue else { return }
+                self?.notifier.forEach { $0.shadeViewContent(slf, didChangeContentSize: newValue) }
+            },
+            scrollView.observe(\.contentInset, options: .new) { [weak self] _, value in
+                guard let slf = self, let newValue = value.newValue else { return }
+                self?.notifier.forEach { $0.shadeViewContent(slf, didChangeContentInset: newValue) }
+            }
+        ]
+    }
+    
+    deinit {
+        // https://bugs.swift.org/browse/SR-5816
+        scrollViewObservations = []
     }
     
     // MARK: - NSObject
@@ -52,6 +68,8 @@ open class ScrollShadeViewContent: NSObject {
     private let notifier = Notifier<ShadeViewContentListener>()
     
     private let forwardingSelectors: Set<Selector>
+    
+    private var scrollViewObservations: [NSKeyValueObservation] = []
     
     private static func forwardingSelectors(for scrollView: UIScrollView) -> Set<Selector> {
         var result = (UIScrollViewDelegate.self as Protocol).getInstanceMethods()
