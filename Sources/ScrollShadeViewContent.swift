@@ -1,9 +1,9 @@
 import UIKit
 
 /// It is compatible with
-/// - UIScrollView and UIScrollViewDelegate
-/// - UITableView and UITableViewDelegate
-/// - UICollectionView and UICollectionViewDelegate
+/// - UIScrollView with UIScrollViewDelegate
+/// - UITableView with UITableViewDelegate
+/// - UICollectionView with UICollectionViewDelegate and UICollectionViewDelegateFlowLayout
 /// Do not use scrollView.delegate. It would be overwritten.
 open class ScrollShadeViewContent: NSObject {
     
@@ -14,7 +14,7 @@ open class ScrollShadeViewContent: NSObject {
     public init(scrollView: UIScrollView, delegate: UIScrollViewDelegate) {
         self.scrollView = scrollView
         self.delegate = delegate
-        self.forwardingSelectors = ScrollShadeViewContent.forwardingSelectors(for: scrollView)
+        self.forwardingSelectors = ScrollShadeViewContent.forwardingSelectors(for: delegate)
         
         super.init()
         
@@ -71,13 +71,19 @@ open class ScrollShadeViewContent: NSObject {
     
     private var scrollViewObservations: [NSKeyValueObservation] = []
     
-    private static func forwardingSelectors(for scrollView: UIScrollView) -> Set<Selector> {
+    private static func forwardingSelectors(for delegate: UIScrollViewDelegate) -> Set<Selector> {
         var result = (UIScrollViewDelegate.self as Protocol).getInstanceMethods()
         
-        if scrollView is UITableView {
+        if delegate is UITableViewDelegate {
             result.formUnion((UITableViewDelegate.self as Protocol).getInstanceMethods())
-        } else if scrollView is UICollectionView {
+        }
+        
+        if delegate is UICollectionViewDelegate {
             result.formUnion((UICollectionViewDelegate.self as Protocol).getInstanceMethods())
+        }
+        
+        if delegate is UICollectionViewDelegateFlowLayout {
+            result.formUnion((UICollectionViewDelegateFlowLayout.self as Protocol).getInstanceMethods())
         }
         
         return result
