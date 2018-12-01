@@ -1,20 +1,77 @@
 import UIKit
 
-/// It is compatible with
-/// - UIScrollView with UIScrollViewDelegate
-/// - UITableView with UITableViewDelegate
-/// - UICollectionView with UICollectionViewDelegate and UICollectionViewDelegateFlowLayout
-/// Do not use scrollView.delegate. It would be overwritten.
-open class ScrollShadeViewContent: NSObject {
+/// It is compatible with any type of UIScrollView and UIScrollViewDelegate:
+/// (e.g. UITableViewDelegate, UICollectionViewDelegateFlowLayout and any other custom type).
+/// Do not overwrite scrollView.delegate, it will be used by ScrollShadeViewContent.
+open class ScrollShadeViewContent: ShadeViewContent {
+
+    open var scrollView: UIScrollView {
+        return impl.scrollView
+    }
     
-    public let scrollView: UIScrollView
+    open var delegate: UIScrollViewDelegate? {
+        get {
+            return impl.delegate
+        }
+        set {
+            impl.delegate = newValue
+        }
+    }
+
+    public init(scrollView: UIScrollView, delegate: UIScrollViewDelegate?) {
+        impl = Impl(scrollView: scrollView, delegate: delegate)
+    }
+
+    // MARK: - ShadeViewContent
     
-    public weak var delegate: UIScrollViewDelegate?
+    public var view: UIView {
+        return impl.view
+    }
     
-    public init(scrollView: UIScrollView, delegate: UIScrollViewDelegate) {
+    public var contentOffset: CGPoint {
+        get {
+            return impl.contentOffset
+        }
+        set {
+            impl.contentOffset = newValue
+        }
+    }
+    
+    public var contentSize: CGSize {
+        return impl.contentSize
+    }
+    
+    public var contentInset: UIEdgeInsets {
+        return impl.contentInset
+    }
+    
+    public func addListener(_ listener: ShadeViewContentListener) {
+        impl.addListener(listener)
+    }
+    
+    public func removeListener(_ listener: ShadeViewContentListener) {
+        impl.removeListener(listener)
+    }
+    
+    // MARK: - Private
+    
+    private typealias Impl = ScrollShadeViewContentImpl
+    
+    private let impl: Impl
+
+}
+
+// MARK: - Private Impl
+
+private class ScrollShadeViewContentImpl: NSObject {
+    
+    let scrollView: UIScrollView
+    
+    weak var delegate: UIScrollViewDelegate?
+    
+    init(scrollView: UIScrollView, delegate: UIScrollViewDelegate?) {
         self.scrollView = scrollView
         self.delegate = delegate
-        self.forwardingSelectors = ScrollShadeViewContent.forwardingSelectors(for: delegate)
         
         super.init()
         
@@ -39,24 +96,24 @@ open class ScrollShadeViewContent: NSObject {
     
     // MARK: - NSObject
     
-    open override func responds(to aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector) -> Bool {
         if super.responds(to: aSelector) {
             return true
         }
         
-        if let delegate = delegate, forwardingSelectors.contains(aSelector) {
+        if let delegate = delegate {
             return delegate.responds(to: aSelector)
         }
         
         return false
     }
     
-    open override func forwardingTarget(for aSelector: Selector) -> Any? {
+    override func forwardingTarget(for aSelector: Selector) -> Any? {
         if super.responds(to: aSelector) {
             return self
         }
     
-        if let delegate = delegate, forwardingSelectors.contains(aSelector) {
+        if let delegate = delegate {
             return delegate
         }
         
@@ -67,37 +124,17 @@ open class ScrollShadeViewContent: NSObject {
     
     private let notifier = Notifier<ShadeViewContentListener>()
     
-    private let forwardingSelectors: Set<Selector>
-    
     private var scrollViewObservations: [NSKeyValueObservation] = []
-    
-    private static func forwardingSelectors(for delegate: UIScrollViewDelegate) -> Set<Selector> {
-        var result = (UIScrollViewDelegate.self as Protocol).getInstanceMethods()
-        
-        if delegate is UITableViewDelegate {
-            result.formUnion((UITableViewDelegate.self as Protocol).getInstanceMethods())
-        }
-        
-        if delegate is UICollectionViewDelegate {
-            result.formUnion((UICollectionViewDelegate.self as Protocol).getInstanceMethods())
-        }
-        
-        if delegate is UICollectionViewDelegateFlowLayout {
-            result.formUnion((UICollectionViewDelegateFlowLayout.self as Protocol).getInstanceMethods())
-        }
-        
-        return result
-    }
     
 }
 
-extension ScrollShadeViewContent: ShadeViewContent {
+extension ScrollShadeViewContentImpl: ShadeViewContent {
 
-    public var view: UIView {
+    var view: UIView {
         return scrollView
     }
     
-    public var contentOffset: CGPoint {
+    var contentOffset: CGPoint {
         get {
             return scrollView.contentOffset
         }
@@ -106,43 +143,44 @@ extension ScrollShadeViewContent: ShadeViewContent {
         }
     }
     
-    public var contentSize: CGSize {
+    var contentSize: CGSize {
         return scrollView.contentSize
     }
     
-    public var contentInset: UIEdgeInsets {
+    var contentInset: UIEdgeInsets {
         return scrollView.contentInset
     }
     
-    public func addListener(_ listener: ShadeViewContentListener) {
+    func addListener(_ listener: ShadeViewContentListener) {
         notifier.subscribe(listener)
     }
     
-    public func removeListener(_ listener: ShadeViewContentListener) {
+    func removeListener(_ listener: ShadeViewContentListener) {
         notifier.unsubscribe(listener)
     }
     
 }
 
-extension ScrollShadeViewContent: UIScrollViewDelegate {
+extension ScrollShadeViewContentImpl: UIScrollViewDelegate {
 
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         notifier.forEach { $0.shadeViewContentDidScroll(self) }
         delegate?.scrollViewDidScroll?(scrollView)
     }
     
-    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         notifier.forEach { $0.shadeViewContentWillBeginDragging(self) }
         delegate?.scrollViewWillBeginDragging?(scrollView)
     }
     
-    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint,
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint,
         targetContentOffset: UnsafeMutablePointer<CGPoint>)
     {
         notifier.forEach {
             $0.shadeViewContentWillEndDragging(self, withVelocity: velocity, targetContentOffset: targetContentOffset)
         }
-        delegate?.scrollViewWillEndDragging?(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
+        delegate?.scrollViewWillEndDragging?(scrollView, withVelocity: velocity,
+            targetContentOffset: targetContentOffset)
     }
 
 }

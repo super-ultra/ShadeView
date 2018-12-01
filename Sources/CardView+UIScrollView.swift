@@ -2,12 +2,10 @@ import UIKit
 
 public extension CardView {
     
-    /// It is compatible with
-    /// - UIScrollView with UIScrollViewDelegate
-    /// - UITableView with UITableViewDelegate
-    /// - UICollectionView with UICollectionViewDelegate and UICollectionViewDelegateFlowLayout
-    /// Do not use scrollView.delegate. It would be overwritten.
-    public convenience init(scrollView: UIScrollView, delegate: UIScrollViewDelegate, headerView: UIView) {
+    /// It is compatible with any type of UIScrollView and UIScrollViewDelegate:
+    /// (e.g. UITableViewDelegate, UICollectionViewDelegateFlowLayout and any other custom type).
+    /// Do not overwrite scrollView.delegate, it will be used by ScrollShadeViewContent.
+    public convenience init(scrollView: UIScrollView, delegate: UIScrollViewDelegate?, headerView: UIView) {
         self.init(content: ScrollShadeViewContent(scrollView: scrollView, delegate: delegate), headerView: headerView)
     }
     
@@ -15,12 +13,10 @@ public extension CardView {
 
 public extension ShadeView {
     
-    /// It is compatible with
-    /// - UIScrollView with UIScrollViewDelegate
-    /// - UITableView with UITableViewDelegate
-    /// - UICollectionView with UICollectionViewDelegate and UICollectionViewDelegateFlowLayout
-    /// Do not use scrollView.delegate. It would be overwritten.
-    public convenience init(scrollView: UIScrollView, delegate: UIScrollViewDelegate, headerView: UIView) {
+    /// It is compatible with any type of UIScrollView and UIScrollViewDelegate:
+    /// (e.g. UITableViewDelegate, UICollectionViewDelegateFlowLayout and any other custom type).
+    /// Do not overwrite scrollView.delegate, it will be used by ScrollShadeViewContent.
+    public convenience init(scrollView: UIScrollView, delegate: UIScrollViewDelegate?, headerView: UIView) {
         self.init(content: ScrollShadeViewContent(scrollView: scrollView, delegate: delegate), headerView: headerView)
     }
     
