@@ -1,6 +1,27 @@
 #import "SVPrivateScrollDelegateProxy.h"
 
+@interface SVPrivateScrollDelegateProxy()
+
+@property (nonatomic, strong, nullable) Class mainDelegateClass;
+@property (nonatomic, strong, nullable) Class supplementaryDelegateClass;
+
+@end
+
 @implementation SVPrivateScrollDelegateProxy
+
+- (void)setMainDelegate:(id)mainDelegate
+{
+    _mainDelegate = mainDelegate;
+    self.mainDelegateClass = [mainDelegate class];
+}
+
+- (void)setSupplementaryDelegate:(id)supplementaryDelegate
+{
+    _supplementaryDelegate = supplementaryDelegate;
+    self.supplementaryDelegateClass = [supplementaryDelegate class];
+}
+
+#pragma mark - NSObject
 
 - (BOOL)respondsToSelector:(SEL)aSelector
 {
@@ -9,10 +30,12 @@
 
 - (NSMethodSignature*)methodSignatureForSelector:(SEL)selector
 {
-    NSMethodSignature* signature = [self.mainDelegate methodSignatureForSelector:selector];
+    NSMethodSignature* signature = [self.mainDelegateClass instanceMethodSignatureForSelector:selector];
+    
     if (!signature) {
-       signature = [self.supplementaryDelegate methodSignatureForSelector:selector];
+       signature = [self.supplementaryDelegateClass instanceMethodSignatureForSelector:selector];
     }
+    
     return signature;
 }
 
