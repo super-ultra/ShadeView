@@ -142,11 +142,11 @@ open class CardView: UIView {
         return anchors.first(where: { $0.anchor == origin })?.state
     }
     
-    open func scroll(to state: State, animated: Bool) {
+    open func scroll(to state: State, animated: Bool, completion: ((Bool) -> Void)? = nil) {
         guard availableStates.contains(state) else { return }
         
         let newAnchor = anchor(for: state)
-        shadeView.scroll(toOrigin: newAnchor, animated: animated)
+        shadeView.scroll(toOrigin: newAnchor, animated: animated, completion: completion)
     }
     
     /// Origins are layout dependent. All dependencies are declared in PositionDependencies.
