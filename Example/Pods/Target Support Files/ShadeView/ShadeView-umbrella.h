@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "SVPrivateScrollDelegateProxy.h"
 
 FOUNDATION_EXPORT double ShadeViewVersionNumber;
 FOUNDATION_EXPORT const unsigned char ShadeViewVersionString[];

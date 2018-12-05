@@ -66,8 +66,12 @@ open class ScrollShadeViewContent: ShadeViewContent {
 private class ScrollShadeViewContentImpl: NSObject {
     
     let scrollView: UIScrollView
-    
-    weak var delegate: UIScrollViewDelegate?
+        
+    weak var delegate: UIScrollViewDelegate? {
+        didSet {
+            delegateProxy.supplementaryDelegate = delegate
+        }
+    }
     
     init(scrollView: UIScrollView, delegate: UIScrollViewDelegate?) {
         self.scrollView = scrollView
@@ -75,7 +79,10 @@ private class ScrollShadeViewContentImpl: NSObject {
         
         super.init()
         
-        scrollView.delegate = self
+        delegateProxy.mainDelegate = self
+        delegateProxy.supplementaryDelegate = delegate
+        
+        scrollView.delegate = delegateProxy
         
         scrollViewObservations = [
             scrollView.observe(\.contentSize, options: .new) { [weak self] _, value in
@@ -94,37 +101,13 @@ private class ScrollShadeViewContentImpl: NSObject {
         scrollViewObservations = []
     }
     
-    // MARK: - NSObject
-    
-    override func responds(to aSelector: Selector) -> Bool {
-        if super.responds(to: aSelector) {
-            return true
-        }
-        
-        if let delegate = delegate {
-            return delegate.responds(to: aSelector)
-        }
-        
-        return false
-    }
-    
-    override func forwardingTarget(for aSelector: Selector) -> Any? {
-        if super.responds(to: aSelector) {
-            return self
-        }
-    
-        if let delegate = delegate {
-            return delegate
-        }
-        
-        return nil
-    }
-    
     // MARK: - Private
     
     private let notifier = Notifier<ShadeViewContentListener>()
     
     private var scrollViewObservations: [NSKeyValueObservation] = []
+    
+    private let delegateProxy = SVPrivateScrollDelegateProxy()
     
 }
 
@@ -165,12 +148,10 @@ extension ScrollShadeViewContentImpl: UIScrollViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         notifier.forEach { $0.shadeViewContentDidScroll(self) }
-        delegate?.scrollViewDidScroll?(scrollView)
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         notifier.forEach { $0.shadeViewContentWillBeginDragging(self) }
-        delegate?.scrollViewWillBeginDragging?(scrollView)
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint,
@@ -179,8 +160,6 @@ extension ScrollShadeViewContentImpl: UIScrollViewDelegate {
         notifier.forEach {
             $0.shadeViewContentWillEndDragging(self, withVelocity: velocity, targetContentOffset: targetContentOffset)
         }
-        delegate?.scrollViewWillEndDragging?(scrollView, withVelocity: velocity,
-            targetContentOffset: targetContentOffset)
     }
 
 }
