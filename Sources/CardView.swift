@@ -243,7 +243,7 @@ open class CardView: UIView {
             
             let statusBarFrame = UIApplication.shared.statusBarFrame
             if statusBarFrame != .zero { // if status bar in not hidden
-                if let maxY = window?.convert(statusBarFrame, to: self).maxY, maxY > 0 {
+                if let maxY = UIApplication.shared.keyWindow?.convert(statusBarFrame, to: self).maxY, maxY > 0 {
                     result.top = maxY
                 }
             }
