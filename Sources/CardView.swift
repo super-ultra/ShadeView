@@ -4,6 +4,7 @@ public protocol CardViewListener: class {
     func сardView(_ сardView: CardView, willBeginUpdatingOrigin origin: CGFloat, source: CardView.OriginChangeSource)
     func сardView(_ сardView: CardView, didUpdateOrigin origin: CGFloat, source: CardView.OriginChangeSource)
     func сardView(_ сardView: CardView, didEndUpdatingOrigin origin: CGFloat, source: CardView.OriginChangeSource)
+    func сardView(_ сardView: CardView, didShangeState state: CardView.State?)
 }
 
 open class CardView: UIView {
@@ -124,29 +125,23 @@ open class CardView: UIView {
     
     open var availableStates: Set<State> = [.top, .bottom, .middle] {
         didSet {
+            if let s = state_, !availableStates.contains(s) {
+                state_ = nil
+            }
             updateAnchors()
         }
     }
     
     open var state: State? {
-        let anchors = availableAnchors.sorted { $0.anchor < $1.anchor }
-        
-        if let first = anchors.first, origin <= first.anchor {
-            return first.state
-        }
-        
-        if let last = anchors.last, origin >= last.anchor {
-            return last.state
-        }
-        
-        return anchors.first(where: { $0.anchor == origin })?.state
+        return state_
     }
     
-    open func scroll(to state: State, animated: Bool, completion: ((Bool) -> Void)? = nil) {
+    open func setState(_ state: State, animated: Bool, completion: ((Bool) -> Void)? = nil) {
         guard availableStates.contains(state) else { return }
         
-        let newAnchor = anchor(for: state)
-        shadeView.scroll(toOrigin: newAnchor, animated: animated, completion: completion)
+        state_ = state
+        
+        shadeView.scroll(toOrigin: anchor(for: state), animated: animated, completion: completion)
     }
     
     /// Origins are layout dependent. All dependencies are declared in PositionDependencies.
@@ -197,12 +192,10 @@ open class CardView: UIView {
         
         containerView.mask?.frame = bounds
         
-        let prevState = state
-        
         updateAnchors()
         
-        if let state = prevState {
-            scroll(to: state, animated: false)
+        if let state = state {
+            setState(state, animated: false)
         }
     }
     
@@ -211,7 +204,7 @@ open class CardView: UIView {
         super.safeAreaInsetsDidChange()
         updateAnchors()
         if state == .bottom {
-            scroll(to: .bottom, animated: false)
+            setState(.bottom, animated: false)
         }
     }
     
@@ -222,7 +215,17 @@ open class CardView: UIView {
     // MARK: - Private
     
     private let shadeView: ShadeView
+    
+    private var state_: State? {
+        didSet {
+            if state_ != oldValue {
+                notifier.forEach { $0.сardView(self, didShangeState: state_) }
+            }
+        }
+    }
+    
     private let notifier = Notifier<CardViewListener>()
+    
     private var headerObservation: NSKeyValueObservation?
 
     private func setupViews() {
@@ -273,11 +276,6 @@ open class CardView: UIView {
     
     private var availableAnchors: [AssociatedAnchor] {
         return availableStates.map { AssociatedAnchor(state: $0, anchor: anchor(for: $0)) }
-    }
-    
-    private var currentPositionDependencies: PositionDependencies {
-        return PositionDependencies(boundsHeight: bounds.height, headerHeight: headerView.frame.height,
-            safeAreaInsets: getSafeAreaInsets())
     }
 
     private func updateAnchors() {
@@ -361,6 +359,16 @@ open class CardView: UIView {
         
         return result
     }
+    
+    private func state(forOrigin origin: CGFloat) -> State? {
+        let anchors = availableAnchors.sorted { $0.anchor < $1.anchor }
+        return anchors.first(where: { $0.anchor == origin })?.state
+    }
+    
+    private var currentPositionDependencies: PositionDependencies {
+        return PositionDependencies(boundsHeight: bounds.height, headerHeight: headerView.frame.height,
+            safeAreaInsets: getSafeAreaInsets())
+    }
 
 }
 
@@ -383,6 +391,10 @@ extension CardView: ShadeViewListener {
     public func shadeView(_ shadeView: ShadeView, didEndUpdatingOrigin origin: CGFloat,
         source: ShadeView.OriginChangeSource)
     {
+        if let newState = state(forOrigin: origin), source == .contentInteraction || source == .headerInteraction {
+            state_ = newState
+        }
+    
         notifier.forEach { $0.сardView(self, didEndUpdatingOrigin: origin, source: source) }
     }
     

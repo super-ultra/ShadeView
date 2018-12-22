@@ -42,17 +42,13 @@ final class ShapeViewController: UIViewController {
         
         setupButtons()
         setupLayout()
+        
+        cardView.setState(.middle, animated: false)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         updateLayoutWithCurrentOrientation()
-        
-        if isFirstLayout {
-            cardView.scroll(to: .middle, animated: false)
-        } else {
-            isFirstLayout = false
-        }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -64,7 +60,7 @@ final class ShapeViewController: UIViewController {
         
         coordinator.animate(alongsideTransition: { [weak self] context in
             let newCardState: CardView.State = (prevCardState == .bottom) ? .bottom : .top
-            self?.cardView.scroll(to: newCardState, animated: context.isAnimated)
+            self?.cardView.setState(newCardState, animated: context.isAnimated)
         })
     }
     
@@ -81,7 +77,6 @@ final class ShapeViewController: UIViewController {
     private let cellInfos = ShapeCell.makeDefaultInfos()
     var portraitConstraints: [NSLayoutConstraint] = []
     var landscapeConstraints: [NSLayoutConstraint] = []
-    var isFirstLayout = true
     
     private func setupLayout() {
         cardView.translatesAutoresizingMaskIntoConstraints = false
@@ -201,15 +196,15 @@ extension ShapeViewController {
     }
     
     @objc private func handleHideButton() {
-        cardView.scroll(to: .bottom, animated: true)
+        cardView.setState(.bottom, animated: true)
     }
     
     @objc private func handleShowButton() {
-        cardView.scroll(to: .top, animated: true)
+        cardView.setState(.top, animated: true)
     }
     
     @objc private func handleMiddleButton() {
-        cardView.scroll(to: .middle, animated: true)
+        cardView.setState(.middle, animated: true)
     }
     
 }
