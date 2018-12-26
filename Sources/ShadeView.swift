@@ -32,11 +32,7 @@ open class ShadeView: UIView {
         }
     }
     
-    open var anchors: [CGFloat] {
-        didSet {
-            updateContentConstraints()
-        }
-    }
+    open var anchors: [CGFloat]
     
     public init(content: Content, headerView: UIView) {
         self.content = content
@@ -74,11 +70,6 @@ open class ShadeView: UIView {
         return visibleRect.contains(point)
     }
     
-    override open func layoutSubviews() {
-        super.layoutSubviews()
-        updateContentConstraints()
-    }
-    
     // MARK: - Private
     
     private let notifier = Notifier<ShadeViewListener>()
@@ -101,20 +92,19 @@ open class ShadeView: UIView {
     
     private func setupLayout() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.set([.left, .right, .bottom], equalTo: self)
-        containerOriginConstraint = containerView.set(.top, equalTo: self, constant: origin, priority: .fittingSizeLevel)
+        containerView.set([.left, .right], equalTo: self)
+        containerView.set(.bottom, equalTo: self, priority: .fittingSizeLevel)
+        containerOriginConstraint = containerView.set(.top, equalTo: self, constant: origin)
     
         content.view.translatesAutoresizingMaskIntoConstraints = false
         content.view.set([.left, .right], equalTo: containerView)
+        content.view.set(.bottom, equalTo: containerView)
         content.view.set(.top, equalTo: headerView, attribute: .bottom)
-        
-        contentBottomConstraint = content.view.set(.bottom, equalTo: containerView, attribute: .top,
-            constant: targetContentBottomPosition, priority: .fittingSizeLevel)
         
         headerView.translatesAutoresizingMaskIntoConstraints = false
         headerView.set([.left, .right, .top], equalTo: containerView)
         if headerView.constraints.isEmpty && !type(of: headerView).requiresConstraintBasedLayout {
-            headerView.set(.height, equalTo: headerView.frame.height, priority: .fittingSizeLevel)
+            headerView.set(.height, equalTo: headerView.frame.height)
         }
     }
     
@@ -139,12 +129,6 @@ open class ShadeView: UIView {
     }
     
     private var contentState: ContentState = .normal
-    
-    private var contentBottomConstraint: NSLayoutConstraint?
-    
-    private func updateContentConstraints() {
-        contentBottomConstraint?.constant = targetContentBottomPosition
-    }
     
     private var targetContentBottomPosition: CGFloat {
         if let anchorLimits = anchorLimits {
