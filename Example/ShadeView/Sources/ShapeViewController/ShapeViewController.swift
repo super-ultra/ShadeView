@@ -48,7 +48,12 @@ final class ShapeViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        updateLayoutWithCurrentOrientation()
+        
+        if isFirstLayout {
+            isFirstLayout = false
+            updateLayoutWithCurrentOrientation()
+            cardView.setState(UIDevice.current.orientation.isLandscape ? .top : .middle, animated: false)
+        }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -68,6 +73,7 @@ final class ShapeViewController: UIViewController {
     override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
         tableView.contentInset.bottom = view.safeAreaInsets.bottom
+        tableView.scrollIndicatorInsets.bottom = view.safeAreaInsets.bottom
     }
     
     // MARK: - Private
@@ -75,8 +81,9 @@ final class ShapeViewController: UIViewController {
     private let tableView = UITableView()
     private var cardView: CardView!
     private let cellInfos = ShapeCell.makeDefaultInfos()
-    var portraitConstraints: [NSLayoutConstraint] = []
-    var landscapeConstraints: [NSLayoutConstraint] = []
+    private var isFirstLayout = true
+    private var portraitConstraints: [NSLayoutConstraint] = []
+    private var landscapeConstraints: [NSLayoutConstraint] = []
     
     private func setupLayout() {
         cardView.translatesAutoresizingMaskIntoConstraints = false
@@ -101,8 +108,6 @@ final class ShapeViewController: UIViewController {
             cardView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             cardView.widthAnchor.constraint(equalToConstant: 320)
         ]
-        
-        updateLayoutWithCurrentOrientation()
     }
     
     private func updateLayoutWithCurrentOrientation() {

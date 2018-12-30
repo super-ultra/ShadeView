@@ -288,12 +288,6 @@ open class ShadeView: UIView {
 
 extension ShadeView: ShadeViewContentListener {
 
-    public func shadeViewContent(_ shadeViewContent: ShadeViewContent, didChangeContentSize contentSize: CGSize) {
-    }
-    
-    public func shadeViewContent(_ shadeViewContent: ShadeViewContent, didChangeContentInset contentInset: UIEdgeInsets) {
-    }
-    
     public func shadeViewContentDidScroll(_ shadeViewContent: ShadeViewContent) {
         guard case let .dragging(lastContentOffset) = contentState else { return }
         

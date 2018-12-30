@@ -83,29 +83,11 @@ private class ScrollShadeViewContentImpl: NSObject {
         delegateProxy.supplementaryDelegate = delegate
         
         scrollView.delegate = delegateProxy
-        
-        scrollViewObservations = [
-            scrollView.observe(\.contentSize, options: .new) { [weak self] _, value in
-                guard let slf = self, let newValue = value.newValue else { return }
-                self?.notifier.forEach { $0.shadeViewContent(slf, didChangeContentSize: newValue) }
-            },
-            scrollView.observe(\.contentInset, options: .new) { [weak self] _, value in
-                guard let slf = self, let newValue = value.newValue else { return }
-                self?.notifier.forEach { $0.shadeViewContent(slf, didChangeContentInset: newValue) }
-            }
-        ]
-    }
-    
-    deinit {
-        // https://bugs.swift.org/browse/SR-5816
-        scrollViewObservations = []
     }
     
     // MARK: - Private
     
     private let notifier = Notifier<ShadeViewContentListener>()
-    
-    private var scrollViewObservations: [NSKeyValueObservation] = []
     
     private let delegateProxy = SVPrivateScrollDelegateProxy()
     

@@ -11,10 +11,6 @@ public protocol ShadeViewContent: class {
 }
 
 public protocol ShadeViewContentListener: class {
-    func shadeViewContent(_ shadeViewContent: ShadeViewContent, didChangeContentSize contentSize: CGSize)
-    
-    func shadeViewContent(_ shadeViewContent: ShadeViewContent, didChangeContentInset contentInset: UIEdgeInsets)
-    
     func shadeViewContentDidScroll(_ shadeViewContent: ShadeViewContent)
     
     func shadeViewContentWillBeginDragging(_ shadeViewContent: ShadeViewContent)
