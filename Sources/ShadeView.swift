@@ -211,16 +211,40 @@ open class ShadeView: UIView {
         return target
     }
     
+    private func selectNextAnchor(to anchor: CGFloat, velocity: CGFloat) -> CGFloat {
+        if velocity == 0 || anchors.isEmpty {
+            return anchor
+        }
+        
+        let sortedAnchors = anchors.sorted()
+        
+        if let anchorIndex = sortedAnchors.index(of: anchor) {
+            let nextIndex = velocity > 0 ? anchorIndex + 1 : anchorIndex - 1
+            let clampedIndex = nextIndex.clamped(to: 0 ... anchors.count - 1)
+            return sortedAnchors[clampedIndex]
+        }
+        
+        return anchor
+    }
+    
     private func moveOriginToTheNearestAnchor(withVelocity velocity: CGFloat, source: OriginChangeSource,
         completion: ((Bool) -> Void)? = nil)
     {
-        // TODO: Compute decelerationRate using anchors
-        let decelerationRate = (UIScrollView.DecelerationRate.normal.rawValue + UIScrollView.DecelerationRate.fast.rawValue) / 2
+        let decelerationRate = UIScrollView.DecelerationRate.fast.rawValue
         let projection = origin.project(initialVelocity: velocity, decelerationRate: decelerationRate)
         
-        if let anchor = anchors.nearestElement(to: projection) {
-            moveOrigin(to: anchor, source: source, animated: true, velocity: velocity)
+        guard let projectionAnchor = anchors.nearestElement(to: projection) else { return }
+        
+        let targetAnchor: CGFloat
+    
+        if (projectionAnchor - origin) * velocity < 0 { // if velocity is too low to change the current anchor
+            // select the next anchor anyway
+            targetAnchor = selectNextAnchor(to: projectionAnchor, velocity: velocity)
+        } else {
+            targetAnchor = projectionAnchor
         }
+        
+        moveOrigin(to: targetAnchor, source: source, animated: true, velocity: velocity)
     }
     
     private func moveOrigin(to newOriginY: CGFloat, source: OriginChangeSource, animated: Bool,velocity: CGFloat? = nil,
