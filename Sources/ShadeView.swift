@@ -310,7 +310,11 @@ extension ShadeView: ShadeViewContentListener {
         {
             // Drop contentOffset changing
             shadeViewContent.removeListener(self)
-            shadeViewContent.contentOffset.y = -shadeViewContent.contentInset.top
+            if diff > 0 {
+                shadeViewContent.contentOffset.y = -shadeViewContent.contentInset.top
+            } else {
+                shadeViewContent.contentOffset.y += diff
+            }
             shadeViewContent.addListener(self)
             
             let newOrigin: CGFloat
