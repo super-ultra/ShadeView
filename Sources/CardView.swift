@@ -404,11 +404,11 @@ extension CardView: ShadeViewListener {
 extension CardView: ShadeViewContentListener {
     
     public func shadeViewContent(_ shadeViewContent: ShadeViewContent, didChangeContentSize contentSize: CGSize) {
-        updateAnchors()
+        setNeedsLayout()
     }
     
     public func shadeViewContent(_ shadeViewContent: ShadeViewContent, didChangeContentInset contentInset: UIEdgeInsets) {
-        updateAnchors()
+        setNeedsLayout()
     }
     
     public func shadeViewContentDidScroll(_ shadeViewContent: ShadeViewContent) {
