@@ -66,7 +66,7 @@ open class ScrollShadeViewContent: ShadeViewContent {
 private class ScrollShadeViewContentImpl: NSObject {
     
     let scrollView: UIScrollView
-        
+    
     weak var delegate: UIScrollViewDelegate? {
         didSet {
             delegateProxy.supplementaryDelegate = delegate
@@ -85,12 +85,12 @@ private class ScrollShadeViewContentImpl: NSObject {
         scrollView.delegate = delegateProxy
         
         scrollViewObservations = [
-            scrollView.observe(\.contentSize, options: .new) { [weak self] _, value in
-                guard let slf = self, let newValue = value.newValue else { return }
+            scrollView.observe(\.contentSize, options: [.new, .old]) { [weak self] _, value in
+                guard let slf = self, let newValue = value.newValue, value.isChanged else { return }
                 self?.notifier.forEach { $0.shadeViewContent(slf, didChangeContentSize: newValue) }
             },
-            scrollView.observe(\.contentInset, options: .new) { [weak self] _, value in
-                guard let slf = self, let newValue = value.newValue else { return }
+            scrollView.observe(\.contentInset, options: [.new, .old]) { [weak self] _, value in
+                guard let slf = self, let newValue = value.newValue, value.isChanged else { return }
                 self?.notifier.forEach { $0.shadeViewContent(slf, didChangeContentInset: newValue) }
             }
         ]
@@ -162,4 +162,56 @@ extension ScrollShadeViewContentImpl: UIScrollViewDelegate {
         }
     }
 
+}
+
+private extension CGFloat {
+    
+    func isEqual(to other: CGFloat, eps: CGFloat) -> Bool {
+        return abs(self - other) < eps
+    }
+    
+}
+
+private extension CGSize {
+    
+    func isEqual(to other: CGSize, eps: CGFloat) -> Bool {
+        return width.isEqual(to: other.width, eps: eps)
+            && height.isEqual(to: other.height, eps: eps)
+    }
+    
+}
+
+private extension UIEdgeInsets {
+    
+    func isEqual(to other: UIEdgeInsets, eps: CGFloat) -> Bool {
+        return top.isEqual(to: other.top, eps: eps)
+            && left.isEqual(to: other.left, eps: eps)
+            && bottom.isEqual(to: other.bottom, eps: eps)
+            && right.isEqual(to: other.right, eps: eps)
+    }
+    
+}
+
+private extension NSKeyValueObservedChange where Value == CGSize {
+    
+    var isChanged: Bool {
+        if let new = newValue, let old = oldValue {
+            return !old.isEqual(to: new, eps: 0.0001)
+        } else {
+            return newValue != oldValue
+        }
+    }
+    
+}
+
+private extension NSKeyValueObservedChange where Value == UIEdgeInsets {
+    
+    var isChanged: Bool {
+        if let new = newValue, let old = oldValue {
+            return !old.isEqual(to: new, eps: 0.0001)
+        } else {
+            return newValue != oldValue
+        }
+    }
+    
 }
