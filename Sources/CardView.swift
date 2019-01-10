@@ -4,7 +4,7 @@ public protocol CardViewListener: class {
     func сardView(_ сardView: CardView, willBeginUpdatingOrigin origin: CGFloat, source: CardView.OriginChangeSource)
     func сardView(_ сardView: CardView, didUpdateOrigin origin: CGFloat, source: CardView.OriginChangeSource)
     func сardView(_ сardView: CardView, didEndUpdatingOrigin origin: CGFloat, source: CardView.OriginChangeSource)
-    func сardView(_ сardView: CardView, didShangeState state: CardView.State?)
+    func сardView(_ сardView: CardView, didChangeState state: CardView.State?)
 }
 
 open class CardView: UIView {
@@ -219,7 +219,7 @@ open class CardView: UIView {
     private var state_: State? {
         didSet {
             if state_ != oldValue {
-                notifier.forEach { $0.сardView(self, didShangeState: state_) }
+                notifier.forEach { $0.сardView(self, didChangeState: state_) }
             }
         }
     }
