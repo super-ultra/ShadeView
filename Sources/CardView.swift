@@ -1,10 +1,10 @@
 import UIKit
 
 public protocol CardViewListener: class {
-    func сardView(_ сardView: CardView, willBeginUpdatingOrigin origin: CGFloat, source: CardView.OriginChangeSource)
-    func сardView(_ сardView: CardView, didUpdateOrigin origin: CGFloat, source: CardView.OriginChangeSource)
-    func сardView(_ сardView: CardView, didEndUpdatingOrigin origin: CGFloat, source: CardView.OriginChangeSource)
-    func сardView(_ сardView: CardView, didChangeState state: CardView.State?)
+    func cardView(_ cardView: CardView, willBeginUpdatingOrigin origin: CGFloat, source: CardView.OriginChangeSource)
+    func cardView(_ cardView: CardView, didUpdateOrigin origin: CGFloat, source: CardView.OriginChangeSource)
+    func cardView(_ cardView: CardView, didEndUpdatingOrigin origin: CGFloat, source: CardView.OriginChangeSource)
+    func cardView(_ cardView: CardView, didChangeState state: CardView.State?)
 }
 
 open class CardView: UIView {
@@ -219,7 +219,7 @@ open class CardView: UIView {
     private var state_: State? {
         didSet {
             if state_ != oldValue {
-                notifier.forEach { $0.сardView(self, didChangeState: state_) }
+                notifier.forEach { $0.cardView(self, didChangeState: state_) }
             }
         }
     }
@@ -378,14 +378,14 @@ extension CardView: ShadeViewListener {
     public func shadeView(_ shadeView: ShadeView, willBeginUpdatingOrigin origin: CGFloat,
         source: ShadeView.OriginChangeSource)
     {
-        notifier.forEach { $0.сardView(self, willBeginUpdatingOrigin: origin, source: source) }
+        notifier.forEach { $0.cardView(self, willBeginUpdatingOrigin: origin, source: source) }
     }
 
     public func shadeView(_ shadeView: ShadeView, didUpdateOrigin origin: CGFloat,
         source: ShadeView.OriginChangeSource)
     {
         updateContentVisibility()
-        notifier.forEach { $0.сardView(self, didUpdateOrigin: origin, source: source) }
+        notifier.forEach { $0.cardView(self, didUpdateOrigin: origin, source: source) }
     }
     
     public func shadeView(_ shadeView: ShadeView, didEndUpdatingOrigin origin: CGFloat,
@@ -395,7 +395,7 @@ extension CardView: ShadeViewListener {
             state_ = newState
         }
     
-        notifier.forEach { $0.сardView(self, didEndUpdatingOrigin: origin, source: source) }
+        notifier.forEach { $0.cardView(self, didEndUpdatingOrigin: origin, source: source) }
     }
     
 }
