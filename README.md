@@ -1,3 +1,5 @@
+ShadeView is deprecated. Use https://github.com/super-ultra/UltraDrawerView.
+
 # ShadeView
 
 [![CI Status](https://img.shields.io/travis/Ilya_Lobanov/ShadeView.svg?style=flat)](https://travis-ci.org/Ilya_Lobanov/ShadeView)
